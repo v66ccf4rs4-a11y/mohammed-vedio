@@ -3,8 +3,9 @@ import { useWindowedAudioData, visualizeAudio } from "@remotion/media-utils";
 import { AbsoluteFill, interpolate, random, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Dust, Grain, Letterbox } from "./Atmosphere";
 import { Credits } from "./Credits";
+import { Hook } from "./Hook";
 import { Landscape } from "./Landscape";
-import { AUDIO_DURATION, poem } from "./poem";
+import { AUDIO_DURATION, hook, poem } from "./poem";
 import { Verse } from "./Verse";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -35,7 +36,7 @@ const LeakOverlay: React.FC<{ seed: number }> = ({ seed }) => {
   );
 };
 
-export const Haneen: React.FC = () => {
+const PoemBody: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -78,6 +79,21 @@ export const Haneen: React.FC = () => {
       <Grain frame={frame} />
       <Letterbox progress={intro} />
       <AbsoluteFill style={{ backgroundColor: "#000", opacity: 1 - intro + outro }} />
+    </AbsoluteFill>
+  );
+};
+
+export const Haneen: React.FC = () => {
+  const { fps } = useVideoConfig();
+  const hookFrames = Math.round(hook.duration * fps);
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#000" }}>
+      <Sequence durationInFrames={hookFrames} layout="absolute-fill">
+        <Hook />
+      </Sequence>
+      <Sequence from={hookFrames} layout="absolute-fill">
+        <PoemBody />
+      </Sequence>
     </AbsoluteFill>
   );
 };

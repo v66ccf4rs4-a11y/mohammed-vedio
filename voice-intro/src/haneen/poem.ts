@@ -20,12 +20,18 @@ export const poem: Bayt[] = [
 
 export const credits = {
   title: "العَينُ بَعدَ فِراقِهَا الوَطَنَا",
-  poet: "شعر: إيليا أبو ماضي",
+  poet: "شعر: خير الدين الزركلي",
   voice: "إلقاء: محمد العمري",
   start: 81.4,
 };
 
 export const AUDIO_DURATION = 87.48;
+
+// الافتتاحية (الهوك) قبل بداية الإلقاء
+export const hook = {
+  lines: ["إن كنتَ بعيدًا عن أهلك ووطنك…", "هذه القصيدة لك"],
+  duration: 4.6,
+};
 
 export const palette = {
   gold: "#e8c27a",
