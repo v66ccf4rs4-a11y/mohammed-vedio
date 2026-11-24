@@ -1,6 +1,6 @@
 // ✏️ عدّل النصوص من هنا
 export const content = {
-  name: "محمد",
+  name: "محمد العمري",
   title: "معلّق صوتي",
   tagline: "صوتٌ يوصل رسالتك",
   specialtiesHeading: "مجالاتي",

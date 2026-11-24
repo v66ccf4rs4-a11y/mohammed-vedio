@@ -35,7 +35,7 @@ export const NameScene: React.FC = () => {
           style={{
             fontFamily: headingFont,
             fontWeight: 900,
-            fontSize: 230,
+            fontSize: 140,
             lineHeight: 1.3,
             color: colors.text,
             opacity: interpolate(frame, [5, 30], [0, 1], clamp),
