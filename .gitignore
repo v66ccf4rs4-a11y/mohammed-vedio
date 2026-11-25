@@ -1,0 +1,27 @@
+# local environments / heavy downloads (recreated by the installer)
+.venv*/
+AI-VIDEO-STUDIO/envs/
+AI-VIDEO-STUDIO/tools/
+AI-VIDEO-STUDIO/models/
+node_modules/
+AI-VIDEO-STUDIO/templates/*/public/fonts/
+AI-VIDEO-STUDIO/templates/motion-canvas/output/
+AI-VIDEO-STUDIO/templates/remotion/out/
+# per-run working data
+AI-VIDEO-STUDIO/projects/*/
+AI-VIDEO-STUDIO/previews/*
+!AI-VIDEO-STUDIO/previews/.gitkeep
+AI-VIDEO-STUDIO/output/*
+!AI-VIDEO-STUDIO/output/.gitkeep
+!AI-VIDEO-STUDIO/output/STUDIO-TEST.mp4
+AI-VIDEO-STUDIO/logs/*
+!AI-VIDEO-STUDIO/logs/.gitkeep
+!AI-VIDEO-STUDIO/logs/test-report.json
+AI-VIDEO-STUDIO/subtitles/*
+!AI-VIDEO-STUDIO/subtitles/.gitkeep
+AI-VIDEO-STUDIO/scenes/*
+!AI-VIDEO-STUDIO/scenes/.gitkeep
+AI-VIDEO-STUDIO/footage/pexels/
+AI-VIDEO-STUDIO/pexels.key
+__pycache__/
+*.pyc

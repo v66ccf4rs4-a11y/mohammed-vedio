@@ -1,0 +1,19 @@
+# Core studio environment (envs/core). PyTorch is installed separately (CPU or CUDA build).
+numpy>=1.26
+scipy>=1.11
+opencv-python>=4.9
+pillow>=10.0
+librosa>=0.10
+soundfile>=0.12
+pydub>=0.25
+audioop-lts>=0.2; python_version >= "3.13"
+moviepy>=2.0
+scenedetect[opencv]>=0.6.4
+faster-whisper>=1.1
+arabic-reshaper>=3.0
+python-bidi>=0.4
+fonttools>=4.50
+requests>=2.31
+playwright>=1.45
+psutil>=5.9
+piper-tts>=1.2
