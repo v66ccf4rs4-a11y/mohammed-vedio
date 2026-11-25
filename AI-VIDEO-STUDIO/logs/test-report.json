@@ -1,0 +1,100 @@
+{
+  "hardware": {
+    "os": "Linux 6.18.44-fc-v880 (#1 SMP PREEMPT_DYNAMIC @0)",
+    "cpu": "x86_64",
+    "cores": 4,
+    "ram_gb": 15.7,
+    "disk_free_gb": 54.0,
+    "gpu": "none detected (CPU mode)",
+    "cuda": false,
+    "ai_generation": "not recommended (procedural scenes used)",
+    "whisper_model": "small"
+  },
+  "tools": {
+    "python": "3.13.18",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "ffprobe": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers",
+    "ffmpeg_libass(harfbuzz)": "yes",
+    "node": "v22.23.5",
+    "npm": "10.9.9",
+    "git": "git version 2.43.0",
+    "blender": "bpy module",
+    "remotion": "4.0.547",
+    "motion-canvas": "3.17.2",
+    "whisperx": "not installed (faster-whisper used)",
+    "comfyui": "not installed",
+    "openmontage": "not installed",
+    "pexels_api_key": "not set (local footage only)",
+    "arabic_fonts": "16 files"
+  },
+  "python_packages": {
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "cv2": "5.1.0",
+    "PIL": "11.3.0",
+    "librosa": "1.0.1",
+    "soundfile": "0.14.0",
+    "pydub": "ok",
+    "moviepy": "2.1.2",
+    "scenedetect": "0.7.3",
+    "faster_whisper": "1.2.1",
+    "ctranslate2": "4.9.1",
+    "arabic_reshaper": "3.1.0",
+    "bidi": "ok",
+    "playwright": "ok",
+    "torch": "MISSING",
+    "torchaudio": "MISSING"
+  },
+  "tests": {
+    "ffmpeg_encode": {
+      "status": "PASS",
+      "detail": "H.264/AAC 1920x1080@60 -> ffmpeg-test.mp4",
+      "seconds": 4.5
+    },
+    "arabic_fonts_ffmpeg": {
+      "status": "PASS",
+      "detail": "9 families shaped by libass/HarfBuzz -> arabic-fonts.png",
+      "seconds": 0.1
+    },
+    "audio_analysis": {
+      "status": "PASS",
+      "detail": "6.50s -17.6 LUFS quality=good",
+      "seconds": 0.4
+    },
+    "arabic_transcription": {
+      "status": "PASS",
+      "detail": "faster-whisper/small/cpu word-accuracy 100%: هنا تبدأ الحكاية في قلب الصحراء يشرق الضوء من جديد",
+      "seconds": 5.2
+    },
+    "whisperx": {
+      "status": "FAIL",
+      "detail": "WhisperX not installed (optional; Faster-Whisper is the default engine)",
+      "seconds": 0.0
+    },
+    "remotion_render": {
+      "status": "PASS",
+      "detail": "/home/user/mohammed-vedio/AI-VIDEO-STUDIO/previews/remotion-ArabicTitle.mp4",
+      "seconds": 25.6
+    },
+    "motion_canvas_render": {
+      "status": "PASS",
+      "detail": "previews/motion-canvas.mp4 1080x1920 9.27s (re-run after wait-loop fix)",
+      "seconds": 40
+    },
+    "blender_render": {
+      "status": "PASS",
+      "detail": "/home/user/mohammed-vedio/AI-VIDEO-STUDIO/previews/blender-title.mp4",
+      "seconds": 11.3
+    },
+    "comfyui": {
+      "status": "FAIL",
+      "detail": "not installed; hardware: not recommended (procedural scenes used)",
+      "seconds": 0.0
+    },
+    "full_production_workflow": {
+      "status": "PASS",
+      "detail": "/home/user/mohammed-vedio/AI-VIDEO-STUDIO/output/STUDIO-TEST.mp4 h264 1080x1920 30/1 aac 10.00s",
+      "seconds": 118.4
+    }
+  }
+}
