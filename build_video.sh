@@ -21,6 +21,7 @@ dur() { ffprobe -v error -show_entries format=duration -of csv=p=0 "$1"; }
 i=0
 for s in "${SHOTS[@]}"; do
   i=$((i+1)); IFS='|' read -r SRC D SLOW <<<"$s"
+  if [ -s "$B/s$i.mp4" ]; then echo "لقطة $i جاهزة"; continue; fi
   echo "لقطة $i: $SRC"
   # 1) تحجيم إلى 9:16 + إبطاء مع دمج الإطارات لحركة ناعمة
   ffmpeg -loglevel error -y -i "$SRC" -an -vf \
@@ -42,7 +43,7 @@ for s in "${SHOTS[@]}"; do
   N=$(echo "$D*30" | bc)
   ffmpeg -loglevel error -y -i "$B/p$i.mp4" -t "$D" -vf \
     "scale=2160:3840,zoompan=z='1+0.07*on/$N':d=1:s=1080x1920:fps=30:x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2',eq=saturation=0.68:contrast=1.06:brightness=-0.035,colorbalance=bs=0.04:bm=0.02,vignette=PI/4.5" \
-    -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p "$B/s$i.mp4"
+    -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p "$B/tmp_s$i.mp4" && mv "$B/tmp_s$i.mp4" "$B/s$i.mp4"
 done
 
 # 4) دمج اللقطات بانتقالات ناعمة + التعليق الصوتي
