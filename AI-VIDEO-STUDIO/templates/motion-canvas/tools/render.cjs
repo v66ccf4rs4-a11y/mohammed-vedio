@@ -16,16 +16,25 @@ const path = require('path');
   if (!(await render.isVisible())) await p.click('button[title="Video Settings"]');
   await render.click();
   const t0 = Date.now();
-  let started = false;
+  let started = false, lastSize = -1, stable = 0;
   while (Date.now() - t0 < 900000) {
-    await p.waitForTimeout(1500);
-    const busy = await p.getByRole('button', {name: /abort/i}).isVisible().catch(() => false);
+    await new Promise(r => setTimeout(r, 1500));
+    const busy = await Promise.race([
+      p.getByRole('button', {name: /abort/i}).isVisible().catch(() => false),
+      new Promise(r => setTimeout(() => r(null), 3000)),
+    ]);
     if (busy) started = true;
-    if (started && !busy) break;
-    if (!started && Date.now() - t0 > 20000) break;
+    // finished when the exported file is new and its size has stopped changing
+    if (fs.existsSync(out) && fs.statSync(out).mtimeMs > before) {
+      const size = fs.statSync(out).size;
+      stable = size === lastSize && size > 10000 ? stable + 1 : 0;
+      lastSize = size;
+      if (stable >= 3 && busy !== true) break;
+    }
+    if (!started && Date.now() - t0 > 60000 && !fs.existsSync(out)) break;
   }
-  await p.waitForTimeout(3000); // let the FFmpeg exporter finalise the file
-  await b.close();
+  await Promise.race([b.close(), new Promise(r => setTimeout(r, 5000))]);
   if (!fs.existsSync(out) || fs.statSync(out).mtimeMs <= before || fs.statSync(out).size < 10000) { console.error('render failed'); process.exit(1); }
   console.log('rendered', out);
+  process.exit(0);
 })();
