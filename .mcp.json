@@ -4,6 +4,21 @@
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "@playwright/mcp@0.0.86", "--headless", "--no-sandbox"]
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y", "chrome-devtools-mcp@1.14.0",
+        "--headless", "--isolated",
+        "--executablePath", "/opt/pw-browsers/chromium-1243/chrome-linux64/chrome",
+        "--chromeArg=--no-sandbox",
+        "--no-usage-statistics", "--no-performance-crux"
+      ]
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
     }
   }
 }
