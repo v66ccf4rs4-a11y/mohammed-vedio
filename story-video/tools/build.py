@@ -149,7 +149,10 @@ class Scene:
         js = "\n    ".join(emit(self.js))
         html = f"""<template>
   <style>
+    {FONT_FACE}
     #root {{ position: absolute; inset: 0; }}
+    .title {{ position: absolute; left: 0; width: {CLOTH[2]}px; direction: rtl; text-align: center;
+      font-family: 'Amiri', serif; color: #140B05; z-index: 5; }}
     .cloth-clip {{ position: absolute; left: {CLOTH[0]}px; top: {CLOTH[1]}px;
       width: {CLOTH[2]}px; height: {CLOTH[3]}px; overflow: hidden; }}
     .cam {{ position: absolute; inset: 0; }}
@@ -206,6 +209,17 @@ def day_night(sc, t0, t1, period_start, period_end, sun_y=70):
 
 def scene1():
     sc = Scene("s1", 0.0, 22.5)
+    # opening title over the music intro, on the cloth like printed card
+    sc.raw('<div id="s1-t1" class="title" style="top:150px;font-size:46px;font-weight:400">'
+           'للكاتب الروسي</div>')
+    sc.raw('<div id="s1-t2" class="title" style="top:212px;font-size:84px;font-weight:700">'
+           'أنطون تشيخوف</div>')
+    sc.raw('<div id="s1-t3" class="title" style="top:352px;font-size:44px;font-weight:700">'
+           'صوت محمد العمري</div>')
+    sc.tw("#s1-t1", {"opacity": 1, "filter": "blur(0px)"}, {"opacity": 0, "filter": "blur(8px)"}, 5.9, 0.25, "power2.in")
+    sc.tw("#s1-t2", {"opacity": 1, "filter": "blur(0px)"}, {"opacity": 0, "filter": "blur(8px)"}, 5.96, 0.25, "power2.in")
+    sc.tw("#s1-t3", {"opacity": 0, "filter": "blur(6px)"}, {"opacity": 1, "filter": "blur(0px)"}, 1.6, 0.2, "power2.out")
+    sc.tw("#s1-t3", {"opacity": 1, "filter": "blur(0px)"}, {"opacity": 0, "filter": "blur(8px)"}, 6.02, 0.25, "power2.in")
     bed = sc.add("bed", "bed", 470, FLOOR, scale=1.15, z=2)
     # the man lying on the bed: a standing puppet turned on its back
     # rotated -90 about its centre: head to the headboard, face up, back on the mattress (y 755)

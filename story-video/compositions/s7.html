@@ -1,6 +1,14 @@
 <template>
   <style>
+    
+@font-face { font-family: 'Amiri'; font-weight: 400;
+  src: url('assets/fonts/amiri-arabic-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Amiri'; font-weight: 700;
+  src: url('assets/fonts/amiri-arabic-700-normal.woff2') format('woff2'); }
+
     #root { position: absolute; inset: 0; }
+    .title { position: absolute; left: 0; width: 940px; direction: rtl; text-align: center;
+      font-family: 'Amiri', serif; color: #140B05; z-index: 5; }
     .cloth-clip { position: absolute; left: 70px; top: 240px;
       width: 940px; height: 880px; overflow: hidden; }
     .cam { position: absolute; inset: 0; }
