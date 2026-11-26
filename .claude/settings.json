@@ -4,7 +4,9 @@
     "agent-skills@addy-agent-skills": true,
     "impeccable@impeccable": true,
     "hyperframes@hyperframes": true,
-    "frontend-design@anthropic-plugin-directory": true
+    "frontend-design@anthropic-plugin-directory": true,
+    "humanizer@humanizer": true,
+    "linkedin-agent@linkedin-agent-skill": true
   },
   "extraKnownMarketplaces": {
     "superpowers-dev": {
@@ -30,6 +32,54 @@
         "source": "github",
         "repo": "heygen-com/hyperframes"
       }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
+    },
+    "linkedin-agent-skill": {
+      "source": {
+        "source": "github",
+        "repo": "Jakeschincariol/linkedin-agent-skill"
+      }
     }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "graphify hook-guard search",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "graphify hook-guard read",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "graphify hook-guard compact",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
