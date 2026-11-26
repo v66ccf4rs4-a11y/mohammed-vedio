@@ -10,7 +10,7 @@
   - linkedin-agent — 11 LinkedIn skills (posts, comments, profile, plan)
 - **Project skills** (`.claude/skills/`): find-skills, hypit (video from a reference; CLI `hypit`), graphify (codebase knowledge graph; CLI `graphify`).
 - **Remotion skills** — synced from the claude.ai account.
-- **Playwright MCP** — browser automation, configured in `.mcp.json`.
+- **MCP servers** (`.mcp.json`): Playwright and Chrome DevTools (headless browser automation and debugging), Context7 (up-to-date library docs; no key needed).
 - **gstack**, and the `graphify`, `skillspector` and `hypit` CLIs — installed by the cloud environment's setup script.
 - **SkillSpector** — scan any new skill before installing it: `skillspector scan <path-or-repo-url> --no-llm`.
 - **gstack**: If it is missing, install it with:
