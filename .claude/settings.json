@@ -1,0 +1,35 @@
+{
+  "enabledPlugins": {
+    "superpowers@superpowers-dev": true,
+    "agent-skills@addy-agent-skills": true,
+    "impeccable@impeccable": true,
+    "hyperframes@hyperframes": true,
+    "frontend-design@anthropic-plugin-directory": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-dev": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers"
+      }
+    },
+    "addy-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "hyperframes": {
+      "source": {
+        "source": "github",
+        "repo": "heygen-com/hyperframes"
+      }
+    }
+  }
+}
