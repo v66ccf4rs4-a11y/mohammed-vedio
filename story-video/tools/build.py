@@ -17,7 +17,22 @@ COMP.mkdir(exist_ok=True)
 W, H = 1080, 1920
 CLOTH = (70, 240, 940, 880)          # x, y, w, h of the cloth on the frame
 FLOOR = 820                          # the rod the puppets stand on, cloth coords
-TOTAL = 201.5
+TOTAL = 201.5                        # original narration time
+CUTS = json.loads((Path(__file__).resolve().parent.parent / "assets" / "cuts.json").read_text())
+
+
+def R(t):
+    """Original narration time -> film time, after the pauses in assets/cuts.json are removed."""
+    out = t
+    for a, b in CUTS:
+        if t >= b:
+            out -= b - a
+        elif t > a:
+            out -= t - a
+    return round(out, 3)
+
+
+NT = R(TOTAL)                        # film length
 MOTHER = (640, FLOOR)                # where the mother sits, cloth coords
 
 FONT_FACE = """
@@ -41,6 +56,22 @@ def emit(items):
     """Turn recorded tweens into JS. Only each element's earliest fromTo renders immediately;
     the rest get immediateRender: false, so a seek before an element's first tween keeps
     that tween's from-values."""
+    # after the pauses are removed, a tween may run into the next one on the same element:
+    # end it where the next one starts
+    starts = {}
+    for it in items:
+        if isinstance(it, tuple):
+            starts.setdefault(it[1], []).append(it[2])
+    clipped = []
+    for it in items:
+        if isinstance(it, tuple):
+            kind, sel, at, frm, to = it
+            later = [x for x in starts[sel] if x > at]
+            if later and at + to["duration"] > min(later):
+                to = dict(to, duration=round(max(0.05, min(later) - at), 3))
+            it = (kind, sel, at, frm, to)
+        clipped.append(it)
+    items = clipped
     first = {}
     for it in items:
         if isinstance(it, tuple):
@@ -68,7 +99,7 @@ class Scene:
         self.beam_op = {}
 
     def t(self, abs_t):
-        return round(max(0.0, abs_t - self.start), 3)
+        return round(max(0.0, R(abs_t) - R(self.start)), 3)
 
     def add(self, kind, pid, fx, fy, outer=False, **kw):
         html, piv = puppet(kind, f"{self.sid}-{pid}", fx, fy, **kw)
@@ -79,13 +110,21 @@ class Scene:
     def raw(self, html, outer=False):
         (self.outer if outer else self.html).append(html)
 
-    def tw(self, sel, frm, to, at, dur, ease="power2.inOut"):
+    def tw(self, sel, frm, to, at, dur, ease="power2.inOut", film=False):
+        """at and dur in narration time; film=True means they are already in film time."""
+        if film:
+            pos = round(max(0.0, at - R(self.start)), 3)
+        else:
+            # a tween that spans removed pauses shrinks with them, but never below 0.3 s
+            dur = round(max(R(at + dur) - R(at), min(dur, 0.3)), 3)
+            pos = self.t(at)
         # one fromTo per element, so each element's earliest tween can own its baseline
         for s in (sel if isinstance(sel, list) else [sel]):
-            self.js.append(("tw", s, self.t(at), frm, dict(to, duration=dur, ease=ease)))
+            self.js.append(("tw", s, pos, frm, dict(to, duration=dur, ease=ease)))
 
-    def set(self, sel, props, at):
-        self.js.append(f"tl.set({j(sel)}, {j(props)}, {self.t(at)});")
+    def set(self, sel, props, at, film=False):
+        pos = round(max(0.0, at - R(self.start)), 3) if film else self.t(at)
+        self.js.append(f"tl.set({j(sel)}, {j(props)}, {pos});")
 
     def rot(self, pid, part, frm, to, at, dur, ease="power2.inOut"):
         piv, flip = self.piv[pid]
@@ -141,7 +180,7 @@ class Scene:
         return sel
 
     def write(self, cam=False):
-        dur = round(self.end - self.start, 3)
+        dur = round(R(self.end) - R(self.start), 3)
         body = "\n".join(self.html)
         if cam:
             body = f'<div id="{self.sid}-cam" class="cam">{body}</div>'
@@ -185,6 +224,7 @@ class Scene:
 def day_night(sc, t0, t1, period_start, period_end, sun_y=70):
     """Day and night race: a sun crosses the top by day, the cloth floods blue by night."""
     sc.raw(f'<div id="{sc.sid}-flood" class="flood"></div>', outer=True)
+    t0, t1 = R(t0), R(t1)          # the race runs in film time, so cuts never squeeze it
     t, k = t0, 0
     while t < t1 - 0.3:
         f = (t - t0) / max(0.001, t1 - t0)
@@ -194,12 +234,16 @@ def day_night(sc, t0, t1, period_start, period_end, sun_y=70):
         mid = f"moon{k}"
         sc.add("sun", sid, 1000, sun_y + 60, scale=0.8, z=1, opacity=0, outer=True)
         sc.add("moon", mid, 1000, sun_y + 50, scale=0.7, z=1, opacity=0, outer=True)
-        sc.tw(f"#{sc.sid}-{sid}", {"x": 0, "opacity": 1}, {"x": -1060, "opacity": 1}, t, half, "none")
-        sc.set(f"#{sc.sid}-{sid}", {"opacity": 0}, t + half)
-        sc.tw(f"#{sc.sid}-flood", {"opacity": 0}, {"opacity": 0.62}, t + half - 0.12, 0.25, "power2.inOut")
-        sc.tw(f"#{sc.sid}-{mid}", {"x": 0, "opacity": 1}, {"x": -1060, "opacity": 1}, t + half, half, "none")
-        sc.set(f"#{sc.sid}-{mid}", {"opacity": 0}, t + per)
-        sc.tw(f"#{sc.sid}-flood", {"opacity": 0.62}, {"opacity": 0}, t + per - 0.12, 0.25, "power2.inOut")
+        sc.tw(f"#{sc.sid}-{sid}", {"x": 0, "opacity": 1}, {"x": -1060, "opacity": 1}, t, half - 0.02,
+              "none", film=True)
+        sc.set(f"#{sc.sid}-{sid}", {"opacity": 0}, t + half, film=True)
+        sc.tw(f"#{sc.sid}-flood", {"opacity": 0}, {"opacity": 0.62}, t + half - 0.12, 0.24,
+              "power2.inOut", film=True)
+        sc.tw(f"#{sc.sid}-{mid}", {"x": 0, "opacity": 1}, {"x": -1060, "opacity": 1}, t + half,
+              half - 0.02, "none", film=True)
+        sc.set(f"#{sc.sid}-{mid}", {"opacity": 0}, t + per, film=True)
+        sc.tw(f"#{sc.sid}-flood", {"opacity": 0.62}, {"opacity": 0}, t + per - 0.12, 0.24,
+              "power2.inOut", film=True)
         t += per
         k += 1
     return t
@@ -370,6 +414,7 @@ STREAK_KINDS = ["man", "woman", "child", "couple", "sofa", "woman", "man", "chil
 
 def streaks(sc, t0, t1, every, opacity=1.0, blur=8, seed=7):
     rnd = random.Random(seed)
+    t0, t1 = R(t0), R(t1)          # in film time
     t, k = t0, 0
     sels = []
     while t < t1:
@@ -383,8 +428,9 @@ def streaks(sc, t0, t1, every, opacity=1.0, blur=8, seed=7):
         dur = rnd.uniform(0.7, 1.3)
         f = f"blur({blur}px)"
         sc.tw(s, {"x": 0, "opacity": opacity, "filter": f},
-              {"x": -1500 if left else 1500, "opacity": opacity, "filter": f}, t, dur, "none")
-        sc.set(s, {"opacity": 0}, t + dur)
+              {"x": -1500 if left else 1500, "opacity": opacity, "filter": f}, t, dur - 0.02,
+              "none", film=True)
+        sc.set(s, {"opacity": 0}, t + dur, film=True)
         sels.append(s)
         t += every * rnd.uniform(0.7, 1.3)
         k += 1
@@ -459,17 +505,18 @@ def scene7():
             sc.tw(f"#s7-m{k}", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1},
                   178.6 + k * 0.085, 0.12, "power2.out")
     # «يبكي» her shoulders shake; «فأبكي» his answer
-    t = 182.4
-    while t < TOTAL - 1.6:
+    # breathing runs in film time, so the cuts never squeeze it
+    t = R(182.4)
+    while t < NT - 1.6:
         sc.tw("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"},
-              {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, t, 0.6, "power2.inOut")
+              {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, t, 0.6, "power2.inOut", film=True)
         sc.tw("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"},
-              {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, t + 0.6, 0.8, "power2.inOut")
+              {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, t + 0.6, 0.78, "power2.inOut", film=True)
         t += 1.4
-    t = 183.5
-    while t < 189.0:
-        sc.tw("#s7-man-sh", {"y": 0}, {"y": -5}, t, 0.7, "power2.inOut")
-        sc.tw("#s7-man-sh", {"y": -5}, {"y": 0}, t + 0.7, 0.9, "power2.inOut")
+    t = R(183.5)
+    while t < R(189.0) - 1.6:
+        sc.tw("#s7-man-sh", {"y": 0}, {"y": -5}, t, 0.7, "power2.inOut", film=True)
+        sc.tw("#s7-man-sh", {"y": -5}, {"y": 0}, t + 0.7, 0.88, "power2.inOut", film=True)
         t += 1.6
     # «أمي» only she remains
     sc.tw([man] + marks, {"opacity": 1}, {"opacity": 0}, 189.0, 0.6, "power2.in")
@@ -503,7 +550,7 @@ def stage():
     rnd = random.Random(11)
     flick = []
     t = 1.4
-    while t < TOTAL - 7:
+    while t < NT - 7:
         flick.append((round(t, 2), round(rnd.uniform(0.0, 0.55), 2)))
         t += rnd.uniform(0.6, 1.4)
     js = ["tl.fromTo('#st-dim', {opacity: 0.3}, {opacity: 0, duration: 1.2, ease: 'expo.out'}, 0);"]
@@ -514,8 +561,8 @@ def stage():
                   f"ease: 'power2.inOut'{ir}}}, {t});")
         prev = v
     js.append(f"tl.fromTo('#st-dim', {{opacity: 0}}, {{opacity: 0.78, duration: 6, ease: 'power2.in', immediateRender: false}}, "
-              f"{TOTAL - 6.5});")
-    js.append(f"tl.set({{}}, {{}}, {TOTAL});")
+              f"{NT - 6.5});")
+    js.append(f"tl.set({{}}, {{}}, {NT});")
     cx, cy, cw, ch = CLOTH
     html = f"""<template>
   <style>
@@ -574,11 +621,15 @@ def stage():
 
 def captions():
     words = json.loads((ROOT / "assets" / "transcript.json").read_text(encoding="utf-8"))
+    for w in words:
+        w["o_start"], w["o_end"] = w["start"], w["end"]       # original times decide the groups
+        w["start"], w["end"] = R(w["start"]), R(w["end"])
+    last = words[-1]
     words = words[:-1]                      # «أمي» lands on its own in the final shot
     groups, cur = [], []
     for k, w in enumerate(words):
         if cur:
-            gap = w["start"] - cur[-1]["end"]
+            gap = w["o_start"] - cur[-1]["o_end"]
             chars = sum(len(x["text"]) + 1 for x in cur) + len(w["text"])
             if gap >= 0.45 or len(cur) >= 5 or chars > 24:
                 groups.append(cur)
@@ -589,7 +640,7 @@ def captions():
     html, js = [], []
     for gi, g in enumerate(groups):
         start = max(0.1, g[0]["start"] - 0.15)
-        last_start = json.loads((ROOT / "assets" / "transcript.json").read_text(encoding="utf-8"))[-1]["start"]
+        last_start = last["start"]
         nxt = groups[gi + 1][0]["start"] - 0.15 if gi + 1 < len(groups) else last_start - 0.1
         end = round(min(nxt, g[-1]["end"] + 1.0), 2)
         spans = " ".join(f'<span id="cw-{w["id"]}" class="w">{w["text"]}</span>' for w in g)
@@ -602,12 +653,11 @@ def captions():
         js.append(f"tl.to('#cg-{gi}', {{opacity: 0, duration: 0.12, ease: 'power2.in'}}, {end - 0.12:.2f});")
         js.append(f"tl.set('#cg-{gi}', {{opacity: 0, visibility: 'hidden'}}, {end:.2f});")
     # the last word
-    last = json.loads((ROOT / "assets" / "transcript.json").read_text(encoding="utf-8"))[-1]
     html.append('<div id="cap-last" class="cg last">أمي</div>')
     js.append(f"tl.fromTo('#cap-last', {{opacity: 0, filter: 'blur(10px)', scale: 1.08}}, "
               f"{{opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.9, ease: 'expo.out'}}, "
               f"{last['start'] - 0.05:.2f});")
-    js.append(f"tl.set({{}}, {{}}, {TOTAL});")
+    js.append(f"tl.set({{}}, {{}}, {NT});")
     top = CLOTH[1] + CLOTH[3] + 12
     out = f"""<template>
   <style>
@@ -638,16 +688,16 @@ def captions():
 
 def index():
     hosts = ['      <div id="stage" data-composition-id="stage" data-composition-src="compositions/stage.html" '
-             f'data-start="0" data-duration="{TOTAL}" data-track-index="0" data-track-kind="graphics" '
+             f'data-start="0" data-duration="{NT}" data-track-index="0" data-track-kind="graphics" '
              f'data-width="{W}" data-height="{H}" style="z-index:1"></div>']
     for sid, s, e in SCENES:
         hosts.append(f'      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html" '
-                     f'data-start="{s}" data-duration="{round(e - s, 3)}" data-track-index="1" '
+                     f'data-start="{R(s)}" data-duration="{round(R(e) - R(s), 3)}" data-track-index="1" '
                      f'data-track-kind="graphics" data-width="{W}" data-height="{H}" style="z-index:2"></div>')
     hosts.append('      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" '
-                 f'data-start="0" data-duration="{TOTAL}" data-track-index="2" data-track-kind="captions" '
+                 f'data-start="0" data-duration="{NT}" data-track-index="2" data-track-kind="captions" '
                  f'data-width="{W}" data-height="{H}" style="z-index:3"></div>')
-    hosts.append(f'      <audio id="narration" src="assets/narration.mp3" data-start="0" data-duration="{TOTAL}" '
+    hosts.append(f'      <audio id="narration" src="assets/narration_tight.m4a" data-start="0" data-duration="{NT}" '
                  'data-track-index="3" data-volume="1" data-fade-out="2"></audio>')
     html = f"""<!doctype html>
 <html lang="ar" data-resolution="portrait">
@@ -663,7 +713,7 @@ def index():
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="{TOTAL}"
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{NT}"
       data-width="{W}" data-height="{H}">
 {chr(10).join(hosts)}
     </div>
