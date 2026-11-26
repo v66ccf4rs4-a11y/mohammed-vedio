@@ -1,0 +1,111 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .cloth-clip { position: absolute; left: 70px; top: 240px;
+      width: 940px; height: 880px; overflow: hidden; }
+    .cam { position: absolute; inset: 0; }
+    .pup { position: absolute; }
+    .pup svg { display: block; }
+    .beam { position: absolute; top: 0; height: 840px;
+      background: linear-gradient(to bottom, rgba(255,243,214,0.9), rgba(255,243,214,0.55) 55%,
+        rgba(255,243,214,0));
+      filter: blur(24px); mix-blend-mode: screen; z-index: 1; }
+    .flood { position: absolute; inset: 0; background: #5A3214; mix-blend-mode: multiply;
+      opacity: 0; z-index: 6; }
+    .flash { position: absolute; inset: 0; background: #FFE9C2; opacity: 0; z-index: 7; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div class="cloth-clip" data-layout-allow-overflow>
+<div id="s7-mother" class="pup" style="left:257px;top:276px;width:426px;height:410px;z-index:2;opacity:1.0;"><svg viewBox="-4 -4 228 220" width="426" height="410" overflow="visible"><path d="M198,210 C206,160 202,112 180,86 C166,70 148,64 132,66 L98,80 C80,76 64,84 62,100 L58,188 C50,196 34,198 24,204 L24,210 Z M90,134 C104,150 124,176 140,200 L90,200 Z" fill="#140B05" fill-rule="evenodd" /><g id="s7-mother-sh"><path d="M78,94 C70,70 86,52 108,54 C128,56 140,70 140,84 C150,92 160,102 166,118 C150,108 132,102 112,104 C96,104 84,102 78,94 Z" fill="#140B05" fill-rule="evenodd" /><path d="M143.7,91.1 L67.7,131.1 L60.3,116.9 L136.3,76.9 Z" fill="#140B05" fill-rule="evenodd" /><path d="M53,124 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 Z" fill="#140B05" fill-rule="evenodd" /><circle cx="138" cy="84" r="3.5" fill="#4A3320"/></g></svg></div>
+<div id="s7-man" class="pup" style="left:75px;top:650px;width:150px;height:210px;z-index:5;opacity:0;"><svg viewBox="-4 -4 158 218" width="150" height="210" overflow="visible"><path d="M18,208 Q14,128 46,104 L104,104 Q136,128 132,208 Z" fill="#140B05" fill-rule="evenodd" /><g id="s7-man-sh"><path d="M44,60 Q44,18 75,18 Q106,18 106,60 L114,112 L36,112 Z" fill="#140B05" fill-rule="evenodd" /></g></svg></div>
+<div id="s7-m0" class="pup" style="left:120px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m1" class="pup" style="left:136px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m2" class="pup" style="left:152px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m3" class="pup" style="left:168px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m4" class="pup" style="left:132px;top:96px;width:76px;height:7px;background:#140B05;opacity:0;z-index:4;"></div>
+<div id="s7-m5" class="pup" style="left:240px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m6" class="pup" style="left:256px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m7" class="pup" style="left:272px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m8" class="pup" style="left:288px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m9" class="pup" style="left:252px;top:96px;width:76px;height:7px;background:#140B05;opacity:0;z-index:4;"></div>
+<div id="s7-m10" class="pup" style="left:360px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m11" class="pup" style="left:376px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m12" class="pup" style="left:392px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m13" class="pup" style="left:408px;top:70px;width:7px;height:56px;background:#140B05;opacity:0;z-index:4"></div>
+<div id="s7-m14" class="pup" style="left:372px;top:96px;width:76px;height:7px;background:#140B05;opacity:0;z-index:4;"></div>
+
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s7-man", {"x": -280, "opacity": 0}, {"x": 0, "opacity": 1, "duration": 1.4, "ease": "expo.out"}, 1.0);
+    tl.fromTo("#s7-m0", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 4.6);
+    tl.fromTo("#s7-m1", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 4.685);
+    tl.fromTo("#s7-m2", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 4.77);
+    tl.fromTo("#s7-m3", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 4.855);
+    tl.fromTo("#s7-m4", {"opacity": 0, "rotation": -28, "scaleX": 0}, {"opacity": 1, "rotation": -28, "scaleX": 1, "duration": 0.12, "ease": "power2.out"}, 4.94);
+    tl.fromTo("#s7-m5", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.025);
+    tl.fromTo("#s7-m6", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.11);
+    tl.fromTo("#s7-m7", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.195);
+    tl.fromTo("#s7-m8", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.28);
+    tl.fromTo("#s7-m9", {"opacity": 0, "rotation": -28, "scaleX": 0}, {"opacity": 1, "rotation": -28, "scaleX": 1, "duration": 0.12, "ease": "power2.out"}, 5.365);
+    tl.fromTo("#s7-m10", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.45);
+    tl.fromTo("#s7-m11", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.535);
+    tl.fromTo("#s7-m12", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.62);
+    tl.fromTo("#s7-m13", {"opacity": 0, "scaleY": 0}, {"opacity": 1, "scaleY": 1, "duration": 0.12, "ease": "power2.out"}, 5.705);
+    tl.fromTo("#s7-m14", {"opacity": 0, "rotation": -28, "scaleX": 0}, {"opacity": 1, "rotation": -28, "scaleX": 1, "duration": 0.12, "ease": "power2.out"}, 5.79);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut"}, 8.4);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 9.0);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 9.8);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 10.4);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 11.2);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 11.8);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 12.6);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 13.2);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 14.0);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 14.6);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 15.4);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 16.0);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 16.8);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 17.4);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 18.2);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 18.8);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 19.6);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 20.2);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 21.0);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 21.6);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 22.4);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 23.0);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 23.8);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 24.4);
+    tl.fromTo("#s7-mother-sh", {"y": 0, "rotation": 0, "svgOrigin": "130 120"}, {"y": -6, "rotation": -2, "svgOrigin": "130 120", "duration": 0.6, "ease": "power2.inOut", "immediateRender": false}, 25.2);
+    tl.fromTo("#s7-mother-sh", {"y": -6, "rotation": -2, "svgOrigin": "130 120"}, {"y": 0, "rotation": 0, "svgOrigin": "130 120", "duration": 0.8, "ease": "power2.inOut", "immediateRender": false}, 25.8);
+    tl.fromTo("#s7-man-sh", {"y": 0}, {"y": -5, "duration": 0.7, "ease": "power2.inOut"}, 9.5);
+    tl.fromTo("#s7-man-sh", {"y": -5}, {"y": 0, "duration": 0.9, "ease": "power2.inOut", "immediateRender": false}, 10.2);
+    tl.fromTo("#s7-man-sh", {"y": 0}, {"y": -5, "duration": 0.7, "ease": "power2.inOut", "immediateRender": false}, 11.1);
+    tl.fromTo("#s7-man-sh", {"y": -5}, {"y": 0, "duration": 0.9, "ease": "power2.inOut", "immediateRender": false}, 11.8);
+    tl.fromTo("#s7-man-sh", {"y": 0}, {"y": -5, "duration": 0.7, "ease": "power2.inOut", "immediateRender": false}, 12.7);
+    tl.fromTo("#s7-man-sh", {"y": -5}, {"y": 0, "duration": 0.9, "ease": "power2.inOut", "immediateRender": false}, 13.4);
+    tl.fromTo("#s7-man-sh", {"y": 0}, {"y": -5, "duration": 0.7, "ease": "power2.inOut", "immediateRender": false}, 14.3);
+    tl.fromTo("#s7-man-sh", {"y": -5}, {"y": 0, "duration": 0.9, "ease": "power2.inOut", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-man", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m0", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m1", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m2", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m3", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m4", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m5", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m6", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m7", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m8", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m9", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m10", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m11", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m12", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m13", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-m14", {"opacity": 1}, {"opacity": 0, "duration": 0.6, "ease": "power2.in", "immediateRender": false}, 15.0);
+    tl.fromTo("#s7-mother", {"scale": 1, "transformOrigin": "50% 100%"}, {"scale": 1.12, "transformOrigin": "50% 100%", "duration": 4.0, "ease": "power2.inOut"}, 15.3);
+    tl.set({}, {}, 27.5);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>

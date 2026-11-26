@@ -1,0 +1,242 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #1A0E07; }
+    #st-cloth { position: absolute; left: 70px; top: 240px; width: 940px; height: 880px;
+      background:
+        repeating-linear-gradient(0deg, rgba(70,35,10,0.07) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(90deg, rgba(70,35,10,0.06) 0 1px, transparent 1px 5px),
+        radial-gradient(ellipse 70% 60% at 50% 32%, #F4BE6C 0%, #E9A957 30%, #C67C34 72%, #9C5A22 100%); }
+    #st-flick { position: absolute; left: 70px; top: 240px; width: 940px; height: 880px;
+      background: radial-gradient(ellipse 45% 38% at 50% 30%, rgba(255,226,160,0.55), rgba(255,226,160,0));
+      opacity: 0.3; }
+    #st-rod { position: absolute; left: 70px; top: 1060px; width: 940px; height: 8px;
+      background: #140B05; opacity: 0.85; }
+    #st-sill { position: absolute; left: 70px; top: 1068px; width: 940px;
+      height: 52px; background: linear-gradient(#5A2E0F, #3A1D0A); opacity: 0.92; }
+    #st-band { position: absolute; left: 0; top: 140px; width: 1080px; height: 100px;
+      background: linear-gradient(#E9A957, #B86E2C); }
+    #st-top { position: absolute; left: 0; top: 0; width: 1080px; height: 240px; }
+    .wood { position: absolute; background: #2A170B; }
+    #st-apron { position: absolute; left: 0; top: 1120px; width: 1080px; height: 150px;
+      background: linear-gradient(#3A2010, #24130A); border-top: 3px solid #6B4022; }
+    #st-curtain { position: absolute; left: 0; top: 1270px; width: 1080px;
+      height: 650px;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0) 22%),
+        repeating-linear-gradient(90deg, #36090A 0px, #5E1511 38px, #6A1813 46px, #36090A 90px); }
+    #st-dim { position: absolute; inset: 0; background: #0B0603; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+    <div id="st-cloth"></div>
+    <div id="st-flick"></div>
+    <div id="st-rod"></div>
+    <div id="st-sill"></div>
+    <div id="st-band"></div>
+    <svg id="st-top" viewBox="0 0 1080 240" width="1080" height="240">
+      <path d="M0,0 H1080 V240 H0 Z M143.9,179.1 L135.2,185.3 L132.8,195.7 L122.3,193.9 L113.2,199.6 L107.0,190.9 L96.7,188.5 L98.4,178.0 L92.8,168.9 L101.4,162.7 L103.9,152.3 L114.4,154.1 L123.4,148.4 L129.6,157.1 L140.0,159.5 L138.3,170.0 Z M220.6,179.1 L211.9,185.3 L209.5,195.7 L199.0,193.9 L189.9,199.6 L183.7,190.9 L173.3,188.5 L175.1,178.0 L169.4,168.9 L178.1,162.7 L180.5,152.3 L191.0,154.1 L200.1,148.4 L206.3,157.1 L216.7,159.5 L214.9,170.0 Z M297.2,179.1 L288.6,185.3 L286.1,195.7 L275.6,193.9 L266.6,199.6 L260.4,190.9 L250.0,188.5 L251.7,178.0 L246.1,168.9 L254.8,162.7 L257.2,152.3 L267.7,154.1 L276.8,148.4 L283.0,157.1 L293.3,159.5 L291.6,170.0 Z M373.9,179.1 L365.2,185.3 L362.8,195.7 L352.3,193.9 L343.2,199.6 L337.0,190.9 L326.7,188.5 L328.4,178.0 L322.8,168.9 L331.4,162.7 L333.9,152.3 L344.4,154.1 L353.4,148.4 L359.6,157.1 L370.0,159.5 L368.3,170.0 Z M450.6,179.1 L441.9,185.3 L439.5,195.7 L429.0,193.9 L419.9,199.6 L413.7,190.9 L403.3,188.5 L405.1,178.0 L399.4,168.9 L408.1,162.7 L410.5,152.3 L421.0,154.1 L430.1,148.4 L436.3,157.1 L446.7,159.5 L444.9,170.0 Z M527.2,179.1 L518.6,185.3 L516.1,195.7 L505.6,193.9 L496.6,199.6 L490.4,190.9 L480.0,188.5 L481.7,178.0 L476.1,168.9 L484.8,162.7 L487.2,152.3 L497.7,154.1 L506.8,148.4 L513.0,157.1 L523.3,159.5 L521.6,170.0 Z M603.9,179.1 L595.2,185.3 L592.8,195.7 L582.3,193.9 L573.2,199.6 L567.0,190.9 L556.7,188.5 L558.4,178.0 L552.8,168.9 L561.4,162.7 L563.9,152.3 L574.4,154.1 L583.4,148.4 L589.6,157.1 L600.0,159.5 L598.3,170.0 Z M680.6,179.1 L671.9,185.3 L669.5,195.7 L659.0,193.9 L649.9,199.6 L643.7,190.9 L633.3,188.5 L635.1,178.0 L629.4,168.9 L638.1,162.7 L640.5,152.3 L651.0,154.1 L660.1,148.4 L666.3,157.1 L676.7,159.5 L674.9,170.0 Z M757.2,179.1 L748.6,185.3 L746.1,195.7 L735.6,193.9 L726.6,199.6 L720.4,190.9 L710.0,188.5 L711.7,178.0 L706.1,168.9 L714.8,162.7 L717.2,152.3 L727.7,154.1 L736.8,148.4 L743.0,157.1 L753.3,159.5 L751.6,170.0 Z M833.9,179.1 L825.2,185.3 L822.8,195.7 L812.3,193.9 L803.2,199.6 L797.0,190.9 L786.7,188.5 L788.4,178.0 L782.8,168.9 L791.4,162.7 L793.9,152.3 L804.4,154.1 L813.4,148.4 L819.6,157.1 L830.0,159.5 L828.3,170.0 Z M910.6,179.1 L901.9,185.3 L899.5,195.7 L889.0,193.9 L879.9,199.6 L873.7,190.9 L863.3,188.5 L865.1,178.0 L859.4,168.9 L868.1,162.7 L870.5,152.3 L881.0,154.1 L890.1,148.4 L896.3,157.1 L906.7,159.5 L904.9,170.0 Z M987.2,179.1 L978.6,185.3 L976.1,195.7 L965.6,193.9 L956.6,199.6 L950.4,190.9 L940.0,188.5 L941.7,178.0 L936.1,168.9 L944.8,162.7 L947.2,152.3 L957.7,154.1 L966.8,148.4 L973.0,157.1 L983.3,159.5 L981.6,170.0 Z M182.2,215.1 L173.6,221.3 L171.1,231.7 L160.6,229.9 L151.6,235.6 L145.4,226.9 L135.0,224.5 L136.7,214.0 L131.1,204.9 L139.8,198.7 L142.2,188.3 L152.7,190.1 L161.8,184.4 L168.0,193.1 L178.3,195.5 L176.6,206.0 Z M258.9,215.1 L250.2,221.3 L247.8,231.7 L237.3,229.9 L228.2,235.6 L222.0,226.9 L211.7,224.5 L213.4,214.0 L207.8,204.9 L216.4,198.7 L218.9,188.3 L229.4,190.1 L238.4,184.4 L244.6,193.1 L255.0,195.5 L253.3,206.0 Z M335.6,215.1 L326.9,221.3 L324.5,231.7 L314.0,229.9 L304.9,235.6 L298.7,226.9 L288.3,224.5 L290.1,214.0 L284.4,204.9 L293.1,198.7 L295.5,188.3 L306.0,190.1 L315.1,184.4 L321.3,193.1 L331.7,195.5 L329.9,206.0 Z M412.2,215.1 L403.6,221.3 L401.1,231.7 L390.6,229.9 L381.6,235.6 L375.4,226.9 L365.0,224.5 L366.7,214.0 L361.1,204.9 L369.8,198.7 L372.2,188.3 L382.7,190.1 L391.8,184.4 L398.0,193.1 L408.3,195.5 L406.6,206.0 Z M488.9,215.1 L480.2,221.3 L477.8,231.7 L467.3,229.9 L458.2,235.6 L452.0,226.9 L441.7,224.5 L443.4,214.0 L437.8,204.9 L446.4,198.7 L448.9,188.3 L459.4,190.1 L468.4,184.4 L474.6,193.1 L485.0,195.5 L483.3,206.0 Z M565.6,215.1 L556.9,221.3 L554.5,231.7 L544.0,229.9 L534.9,235.6 L528.7,226.9 L518.3,224.5 L520.1,214.0 L514.4,204.9 L523.1,198.7 L525.5,188.3 L536.0,190.1 L545.1,184.4 L551.3,193.1 L561.7,195.5 L559.9,206.0 Z M642.2,215.1 L633.6,221.3 L631.1,231.7 L620.6,229.9 L611.6,235.6 L605.4,226.9 L595.0,224.5 L596.7,214.0 L591.1,204.9 L599.8,198.7 L602.2,188.3 L612.7,190.1 L621.8,184.4 L628.0,193.1 L638.3,195.5 L636.6,206.0 Z M718.9,215.1 L710.2,221.3 L707.8,231.7 L697.3,229.9 L688.2,235.6 L682.0,226.9 L671.7,224.5 L673.4,214.0 L667.8,204.9 L676.4,198.7 L678.9,188.3 L689.4,190.1 L698.4,184.4 L704.6,193.1 L715.0,195.5 L713.3,206.0 Z M795.6,215.1 L786.9,221.3 L784.5,231.7 L774.0,229.9 L764.9,235.6 L758.7,226.9 L748.3,224.5 L750.1,214.0 L744.4,204.9 L753.1,198.7 L755.5,188.3 L766.0,190.1 L775.1,184.4 L781.3,193.1 L791.7,195.5 L789.9,206.0 Z M872.2,215.1 L863.6,221.3 L861.1,231.7 L850.6,229.9 L841.6,235.6 L835.4,226.9 L825.0,224.5 L826.7,214.0 L821.1,204.9 L829.8,198.7 L832.2,188.3 L842.7,190.1 L851.8,184.4 L858.0,193.1 L868.3,195.5 L866.6,206.0 Z M948.9,215.1 L940.2,221.3 L937.8,231.7 L927.3,229.9 L918.2,235.6 L912.0,226.9 L901.7,224.5 L903.4,214.0 L897.8,204.9 L906.4,198.7 L908.9,188.3 L919.4,190.1 L928.4,184.4 L934.6,193.1 L945.0,195.5 L943.3,206.0 Z M1025.6,215.1 L1016.9,221.3 L1014.5,231.7 L1004.0,229.9 L994.9,235.6 L988.7,226.9 L978.3,224.5 L980.1,214.0 L974.4,204.9 L983.1,198.7 L985.5,188.3 L996.0,190.1 L1005.1,184.4 L1011.3,193.1 L1021.7,195.5 L1019.9,206.0 Z " fill="#2A170B" fill-rule="evenodd"/>
+      <rect x="0" y="230" width="1080" height="10" fill="#4A2A14"/>
+    </svg>
+    <div class="wood" style="left:0;top:240px;width:70px;height:880px"></div>
+    <div class="wood" style="left:1010px;top:240px;width:70px;height:880px"></div>
+    <div id="st-apron"></div>
+    <div id="st-curtain"></div>
+    <div id="st-dim"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#st-dim', {opacity: 0.3}, {opacity: 0, duration: 1.2, ease: 'expo.out'}, 0);
+    tl.fromTo('#st-flick', {opacity: 0.3}, {opacity: 0.25, duration: 0.5, ease: 'power2.inOut'}, 1.4);
+    tl.fromTo('#st-flick', {opacity: 0.25}, {opacity: 0.51, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 2.45);
+    tl.fromTo('#st-flick', {opacity: 0.51}, {opacity: 0.28, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 3.42);
+    tl.fromTo('#st-flick', {opacity: 0.28}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 4.49);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.35, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 5.5);
+    tl.fromTo('#st-flick', {opacity: 0.35}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 6.73);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 7.58);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 8.82);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.54, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 9.46);
+    tl.fromTo('#st-flick', {opacity: 0.54}, {opacity: 0.36, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 10.83);
+    tl.fromTo('#st-flick', {opacity: 0.36}, {opacity: 0.09, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 11.92);
+    tl.fromTo('#st-flick', {opacity: 0.09}, {opacity: 0.29, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 12.53);
+    tl.fromTo('#st-flick', {opacity: 0.29}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 13.18);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.02, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 13.98);
+    tl.fromTo('#st-flick', {opacity: 0.02}, {opacity: 0.24, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 14.95);
+    tl.fromTo('#st-flick', {opacity: 0.24}, {opacity: 0.29, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 16.22);
+    tl.fromTo('#st-flick', {opacity: 0.29}, {opacity: 0.27, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 17.33);
+    tl.fromTo('#st-flick', {opacity: 0.27}, {opacity: 0.25, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 18.46);
+    tl.fromTo('#st-flick', {opacity: 0.25}, {opacity: 0.55, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 19.29);
+    tl.fromTo('#st-flick', {opacity: 0.55}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 20.68);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 21.85);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.16, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 22.63);
+    tl.fromTo('#st-flick', {opacity: 0.16}, {opacity: 0.42, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 23.29);
+    tl.fromTo('#st-flick', {opacity: 0.42}, {opacity: 0.47, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 24.21);
+    tl.fromTo('#st-flick', {opacity: 0.47}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 25.12);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.0, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 26.4);
+    tl.fromTo('#st-flick', {opacity: 0.0}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 27.16);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.54, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 28.14);
+    tl.fromTo('#st-flick', {opacity: 0.54}, {opacity: 0.04, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 29.06);
+    tl.fromTo('#st-flick', {opacity: 0.04}, {opacity: 0.43, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 30.16);
+    tl.fromTo('#st-flick', {opacity: 0.43}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 30.98);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 31.84);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.06, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 33.05);
+    tl.fromTo('#st-flick', {opacity: 0.06}, {opacity: 0.06, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 33.85);
+    tl.fromTo('#st-flick', {opacity: 0.06}, {opacity: 0.44, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 34.49);
+    tl.fromTo('#st-flick', {opacity: 0.44}, {opacity: 0.31, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 35.24);
+    tl.fromTo('#st-flick', {opacity: 0.31}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 36.19);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.07, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 37.38);
+    tl.fromTo('#st-flick', {opacity: 0.07}, {opacity: 0.06, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 38.49);
+    tl.fromTo('#st-flick', {opacity: 0.06}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 39.43);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 40.25);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 41.49);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 42.8);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.47, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 43.71);
+    tl.fromTo('#st-flick', {opacity: 0.47}, {opacity: 0.06, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 44.83);
+    tl.fromTo('#st-flick', {opacity: 0.06}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 46.22);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.42, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 47.02);
+    tl.fromTo('#st-flick', {opacity: 0.42}, {opacity: 0.16, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 47.89);
+    tl.fromTo('#st-flick', {opacity: 0.16}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 48.55);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.13, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 49.61);
+    tl.fromTo('#st-flick', {opacity: 0.13}, {opacity: 0.2, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 50.69);
+    tl.fromTo('#st-flick', {opacity: 0.2}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 51.66);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.32, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 52.64);
+    tl.fromTo('#st-flick', {opacity: 0.32}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 53.94);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 54.66);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.14, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 55.91);
+    tl.fromTo('#st-flick', {opacity: 0.14}, {opacity: 0.41, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 56.67);
+    tl.fromTo('#st-flick', {opacity: 0.41}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 58.02);
+    tl.fromTo('#st-flick', {opacity: 0.11}, {opacity: 0.49, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 59.38);
+    tl.fromTo('#st-flick', {opacity: 0.49}, {opacity: 0.23, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 60.46);
+    tl.fromTo('#st-flick', {opacity: 0.23}, {opacity: 0.02, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 61.14);
+    tl.fromTo('#st-flick', {opacity: 0.02}, {opacity: 0.13, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 62.51);
+    tl.fromTo('#st-flick', {opacity: 0.13}, {opacity: 0.14, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 63.68);
+    tl.fromTo('#st-flick', {opacity: 0.14}, {opacity: 0.33, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 64.94);
+    tl.fromTo('#st-flick', {opacity: 0.33}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 65.77);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.04, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 66.95);
+    tl.fromTo('#st-flick', {opacity: 0.04}, {opacity: 0.31, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 67.73);
+    tl.fromTo('#st-flick', {opacity: 0.31}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 69.01);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 69.84);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.01, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 70.6);
+    tl.fromTo('#st-flick', {opacity: 0.01}, {opacity: 0.25, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 71.42);
+    tl.fromTo('#st-flick', {opacity: 0.25}, {opacity: 0.1, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 72.06);
+    tl.fromTo('#st-flick', {opacity: 0.1}, {opacity: 0.31, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 72.96);
+    tl.fromTo('#st-flick', {opacity: 0.31}, {opacity: 0.2, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 73.66);
+    tl.fromTo('#st-flick', {opacity: 0.2}, {opacity: 0.54, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 74.98);
+    tl.fromTo('#st-flick', {opacity: 0.54}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 76.1);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.08, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 77.17);
+    tl.fromTo('#st-flick', {opacity: 0.08}, {opacity: 0.01, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 77.8);
+    tl.fromTo('#st-flick', {opacity: 0.01}, {opacity: 0.39, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 79.13);
+    tl.fromTo('#st-flick', {opacity: 0.39}, {opacity: 0.01, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 80.5);
+    tl.fromTo('#st-flick', {opacity: 0.01}, {opacity: 0.27, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 81.61);
+    tl.fromTo('#st-flick', {opacity: 0.27}, {opacity: 0.18, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 82.79);
+    tl.fromTo('#st-flick', {opacity: 0.18}, {opacity: 0.04, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 84.19);
+    tl.fromTo('#st-flick', {opacity: 0.04}, {opacity: 0.41, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 85.23);
+    tl.fromTo('#st-flick', {opacity: 0.41}, {opacity: 0.41, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 86.55);
+    tl.fromTo('#st-flick', {opacity: 0.41}, {opacity: 0.44, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 87.71);
+    tl.fromTo('#st-flick', {opacity: 0.44}, {opacity: 0.19, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 89.04);
+    tl.fromTo('#st-flick', {opacity: 0.19}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 90.19);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.23, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 91.49);
+    tl.fromTo('#st-flick', {opacity: 0.23}, {opacity: 0.47, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 92.72);
+    tl.fromTo('#st-flick', {opacity: 0.47}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 93.78);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.32, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 94.68);
+    tl.fromTo('#st-flick', {opacity: 0.32}, {opacity: 0.04, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 95.77);
+    tl.fromTo('#st-flick', {opacity: 0.04}, {opacity: 0.55, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 96.88);
+    tl.fromTo('#st-flick', {opacity: 0.55}, {opacity: 0.4, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 98.19);
+    tl.fromTo('#st-flick', {opacity: 0.4}, {opacity: 0.4, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 99.1);
+    tl.fromTo('#st-flick', {opacity: 0.4}, {opacity: 0.24, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 100.16);
+    tl.fromTo('#st-flick', {opacity: 0.24}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 101.43);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.02, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 102.63);
+    tl.fromTo('#st-flick', {opacity: 0.02}, {opacity: 0.26, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 103.71);
+    tl.fromTo('#st-flick', {opacity: 0.26}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 104.5);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 105.49);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.14, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 106.83);
+    tl.fromTo('#st-flick', {opacity: 0.14}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 107.44);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 108.58);
+    tl.fromTo('#st-flick', {opacity: 0.11}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 109.32);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.24, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 110.45);
+    tl.fromTo('#st-flick', {opacity: 0.24}, {opacity: 0.18, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 111.76);
+    tl.fromTo('#st-flick', {opacity: 0.18}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 112.89);
+    tl.fromTo('#st-flick', {opacity: 0.11}, {opacity: 0.44, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 113.84);
+    tl.fromTo('#st-flick', {opacity: 0.44}, {opacity: 0.48, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 115.17);
+    tl.fromTo('#st-flick', {opacity: 0.48}, {opacity: 0.32, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 116.08);
+    tl.fromTo('#st-flick', {opacity: 0.32}, {opacity: 0.07, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 116.93);
+    tl.fromTo('#st-flick', {opacity: 0.07}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 117.93);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.39, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 119.21);
+    tl.fromTo('#st-flick', {opacity: 0.39}, {opacity: 0.15, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 120.57);
+    tl.fromTo('#st-flick', {opacity: 0.15}, {opacity: 0.25, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 121.3);
+    tl.fromTo('#st-flick', {opacity: 0.25}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 122.12);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 123.05);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 124.05);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.54, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 125.32);
+    tl.fromTo('#st-flick', {opacity: 0.54}, {opacity: 0.04, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 126.28);
+    tl.fromTo('#st-flick', {opacity: 0.04}, {opacity: 0.48, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 126.91);
+    tl.fromTo('#st-flick', {opacity: 0.48}, {opacity: 0.39, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 127.54);
+    tl.fromTo('#st-flick', {opacity: 0.39}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 128.6);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.01, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 129.83);
+    tl.fromTo('#st-flick', {opacity: 0.01}, {opacity: 0.25, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 130.54);
+    tl.fromTo('#st-flick', {opacity: 0.25}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 131.16);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.08, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 131.95);
+    tl.fromTo('#st-flick', {opacity: 0.08}, {opacity: 0.35, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 132.58);
+    tl.fromTo('#st-flick', {opacity: 0.35}, {opacity: 0.35, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 133.54);
+    tl.fromTo('#st-flick', {opacity: 0.35}, {opacity: 0.44, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 134.67);
+    tl.fromTo('#st-flick', {opacity: 0.44}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 136.03);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.26, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 136.79);
+    tl.fromTo('#st-flick', {opacity: 0.26}, {opacity: 0.01, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 137.53);
+    tl.fromTo('#st-flick', {opacity: 0.01}, {opacity: 0.39, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 138.51);
+    tl.fromTo('#st-flick', {opacity: 0.39}, {opacity: 0.15, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 139.26);
+    tl.fromTo('#st-flick', {opacity: 0.15}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 140.13);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 141.15);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.22, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 142.35);
+    tl.fromTo('#st-flick', {opacity: 0.22}, {opacity: 0.5, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 143.59);
+    tl.fromTo('#st-flick', {opacity: 0.5}, {opacity: 0.51, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 144.26);
+    tl.fromTo('#st-flick', {opacity: 0.51}, {opacity: 0.07, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 145.43);
+    tl.fromTo('#st-flick', {opacity: 0.07}, {opacity: 0.34, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 146.4);
+    tl.fromTo('#st-flick', {opacity: 0.34}, {opacity: 0.21, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 147.73);
+    tl.fromTo('#st-flick', {opacity: 0.21}, {opacity: 0.48, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 148.78);
+    tl.fromTo('#st-flick', {opacity: 0.48}, {opacity: 0.52, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 150.02);
+    tl.fromTo('#st-flick', {opacity: 0.52}, {opacity: 0.36, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 150.99);
+    tl.fromTo('#st-flick', {opacity: 0.36}, {opacity: 0.4, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 151.75);
+    tl.fromTo('#st-flick', {opacity: 0.4}, {opacity: 0.35, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 153.01);
+    tl.fromTo('#st-flick', {opacity: 0.35}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 154.18);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.54, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 155.5);
+    tl.fromTo('#st-flick', {opacity: 0.54}, {opacity: 0.3, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 156.88);
+    tl.fromTo('#st-flick', {opacity: 0.3}, {opacity: 0.18, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 158.12);
+    tl.fromTo('#st-flick', {opacity: 0.18}, {opacity: 0.47, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 159.44);
+    tl.fromTo('#st-flick', {opacity: 0.47}, {opacity: 0.05, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 160.32);
+    tl.fromTo('#st-flick', {opacity: 0.05}, {opacity: 0.3, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 161.28);
+    tl.fromTo('#st-flick', {opacity: 0.3}, {opacity: 0.27, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 162.49);
+    tl.fromTo('#st-flick', {opacity: 0.27}, {opacity: 0.45, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 163.11);
+    tl.fromTo('#st-flick', {opacity: 0.45}, {opacity: 0.44, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 163.76);
+    tl.fromTo('#st-flick', {opacity: 0.44}, {opacity: 0.18, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 164.5);
+    tl.fromTo('#st-flick', {opacity: 0.18}, {opacity: 0.08, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 165.73);
+    tl.fromTo('#st-flick', {opacity: 0.08}, {opacity: 0.28, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 166.45);
+    tl.fromTo('#st-flick', {opacity: 0.28}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 167.63);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.52, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 168.78);
+    tl.fromTo('#st-flick', {opacity: 0.52}, {opacity: 0.52, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 169.78);
+    tl.fromTo('#st-flick', {opacity: 0.52}, {opacity: 0.12, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 170.45);
+    tl.fromTo('#st-flick', {opacity: 0.12}, {opacity: 0.16, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 171.47);
+    tl.fromTo('#st-flick', {opacity: 0.16}, {opacity: 0.35, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 172.65);
+    tl.fromTo('#st-flick', {opacity: 0.35}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 173.67);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.17, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 174.72);
+    tl.fromTo('#st-flick', {opacity: 0.17}, {opacity: 0.46, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 175.62);
+    tl.fromTo('#st-flick', {opacity: 0.46}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 176.94);
+    tl.fromTo('#st-flick', {opacity: 0.11}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 178.22);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.32, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 179.24);
+    tl.fromTo('#st-flick', {opacity: 0.32}, {opacity: 0.29, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 180.0);
+    tl.fromTo('#st-flick', {opacity: 0.29}, {opacity: 0.33, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 181.0);
+    tl.fromTo('#st-flick', {opacity: 0.33}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 181.63);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.22, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 182.64);
+    tl.fromTo('#st-flick', {opacity: 0.22}, {opacity: 0.31, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 183.88);
+    tl.fromTo('#st-flick', {opacity: 0.31}, {opacity: 0.38, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 184.87);
+    tl.fromTo('#st-flick', {opacity: 0.38}, {opacity: 0.3, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 185.53);
+    tl.fromTo('#st-flick', {opacity: 0.3}, {opacity: 0.53, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 186.46);
+    tl.fromTo('#st-flick', {opacity: 0.53}, {opacity: 0.15, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 187.8);
+    tl.fromTo('#st-flick', {opacity: 0.15}, {opacity: 0.07, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 188.77);
+    tl.fromTo('#st-flick', {opacity: 0.07}, {opacity: 0.45, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 189.72);
+    tl.fromTo('#st-flick', {opacity: 0.45}, {opacity: 0.26, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 191.04);
+    tl.fromTo('#st-flick', {opacity: 0.26}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 191.9);
+    tl.fromTo('#st-flick', {opacity: 0.11}, {opacity: 0.51, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 192.99);
+    tl.fromTo('#st-flick', {opacity: 0.51}, {opacity: 0.43, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 193.69);
+    tl.fromTo('#st-flick', {opacity: 0.43}, {opacity: 0.11, duration: 0.5, ease: 'power2.inOut', immediateRender: false}, 194.31);
+    tl.fromTo('#st-dim', {opacity: 0}, {opacity: 0.78, duration: 6, ease: 'power2.in', immediateRender: false}, 195.0);
+    tl.set({}, {}, 201.5);
+    window.__timelines["stage"] = tl;
+  </script>
+</template>

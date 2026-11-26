@@ -1,0 +1,42 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .cloth-clip { position: absolute; left: 70px; top: 240px;
+      width: 940px; height: 880px; overflow: hidden; }
+    .cam { position: absolute; inset: 0; }
+    .pup { position: absolute; }
+    .pup svg { display: block; }
+    .beam { position: absolute; top: 0; height: 840px;
+      background: linear-gradient(to bottom, rgba(255,243,214,0.9), rgba(255,243,214,0.55) 55%,
+        rgba(255,243,214,0));
+      filter: blur(24px); mix-blend-mode: screen; z-index: 1; }
+    .flood { position: absolute; inset: 0; background: #5A3214; mix-blend-mode: multiply;
+      opacity: 0; z-index: 6; }
+    .flash { position: absolute; inset: 0; background: #FFE9C2; opacity: 0; z-index: 7; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div class="cloth-clip" data-layout-allow-overflow>
+<div id="s2-beam" class="beam" style="left:700px;width:200px;opacity:0.6"></div>
+<div id="s2-man" class="pup" style="left:480px;top:584px;width:160px;height:236px;z-index:4;opacity:1.0;"><svg viewBox="-4 -4 168 244" width="160" height="236" overflow="visible"><g id="s2-man-arm2" transform="rotate(12 48 104)"><path d="M48.0,98 H48.0 Q55.5,98 55.5,105.5 V190.5 Q55.5,198 48.0,198 H48.0 Q40.5,198 40.5,190.5 V105.5 Q40.5,98 48.0,98 Z" fill="#140B05" fill-rule="evenodd" /><path d="M38.7,202 a9.3,9.3 0 1,0 18.6,0 a9.3,9.3 0 1,0 -18.6,0 Z" fill="#140B05" fill-rule="evenodd" /><circle cx="48" cy="104" r="3.5" fill="#4A3320"/></g><path d="M37,94 L93,94 Q104,138 110,176 L146,182 Q158,206 140,234 L20,234 Q22,160 37,94 Z" fill="#140B05" fill-rule="evenodd" /><g id="s2-man-head"><path d="M41,50 Q42,17 65,17 Q88,17 89,50 L97,100 L33,100 Z" fill="#140B05" fill-rule="evenodd" /><path d="M88,44 L99,58 L89,64 Z" fill="#140B05" fill-rule="evenodd" /><path d="M84,64 Q92,76 86,88 L76,84 Z" fill="#140B05" fill-rule="evenodd" /></g><g id="s2-man-arm"><path d="M84.0,98 H84.0 Q91.5,98 91.5,105.5 V194.5 Q91.5,202 84.0,202 H84.0 Q76.5,202 76.5,194.5 V105.5 Q76.5,98 84.0,98 Z" fill="#140B05" fill-rule="evenodd" /><path d="M74.7,206 a9.3,9.3 0 1,0 18.6,0 a9.3,9.3 0 1,0 -18.6,0 Z" fill="#140B05" fill-rule="evenodd" /><circle cx="84" cy="104" r="3.5" fill="#4A3320"/></g></svg></div>
+<div id="s2-wife" class="pup" style="left:135px;top:520px;width:130px;height:300px;z-index:4;opacity:0;"><svg viewBox="-4 -4 138 308" width="130" height="300" overflow="visible"><path d="M47,86 L85,86 Q97,150 101,220 L113,298 L15,298 L25,220 Q33,150 47,86 Z" fill="#140B05" fill-rule="evenodd" /><path d="M92,150 Q122,180 98,222 Z" fill="#140B05" fill-rule="evenodd" /><g id="s2-wife-head"><path d="M42,58 Q42,20 66,20 Q90,20 90,58 Q90,82 79,92 L53,92 Q42,82 42,58 Z" fill="#140B05" fill-rule="evenodd" /><path d="M89,48 L98,58 L89,64 Z" fill="#140B05" fill-rule="evenodd" /></g><ellipse id="s2-wife-womb" cx="99" cy="186" rx="9" ry="12" fill="#E6A453" opacity="0"/><g id="s2-wife-arm"><path d="M80.0,92 H80.0 Q87.5,92 87.5,99.5 V188.5 Q87.5,196 80.0,196 H80.0 Q72.5,196 72.5,188.5 V99.5 Q72.5,92 80.0,92 Z" fill="#140B05" fill-rule="evenodd" /><path d="M70.7,200 a9.3,9.3 0 1,0 18.6,0 a9.3,9.3 0 1,0 -18.6,0 Z" fill="#140B05" fill-rule="evenodd" /><circle cx="80" cy="98" r="3.5" fill="#4A3320"/></g></svg></div>
+
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s2-man", {"opacity": 0, "filter": "blur(6px)"}, {"opacity": 1, "filter": "blur(0px)", "duration": 0.4, "ease": "power2.out"}, 0.0);
+    tl.fromTo("#s2-man-arm", {"rotation": 0, "svgOrigin": "84 104"}, {"rotation": -128, "svgOrigin": "84 104", "duration": 1.2, "ease": "expo.out"}, 0.7);
+    tl.fromTo("#s2-man-arm2", {"rotation": 0, "svgOrigin": "48 104"}, {"rotation": -112, "svgOrigin": "48 104", "duration": 1.2, "ease": "expo.out"}, 0.85);
+    tl.fromTo("#s2-man-head", {"rotation": 0, "svgOrigin": "65 92"}, {"rotation": -14, "svgOrigin": "65 92", "duration": 1.2, "ease": "expo.out"}, 0.8);
+    tl.fromTo("#s2-wife", {"x": -360, "opacity": 0}, {"x": 0, "opacity": 1, "duration": 1.4, "ease": "expo.out"}, 7.5);
+    tl.fromTo("#s2-wife-womb", {"opacity": 0}, {"opacity": 0.95, "duration": 1.6, "ease": "power2.inOut"}, 12.0);
+    tl.fromTo("#s2-wife-arm", {"rotation": 0, "svgOrigin": "80 98"}, {"rotation": -38, "svgOrigin": "80 98", "duration": 1.4, "ease": "power2.inOut"}, 18.5);
+    tl.fromTo("#s2-wife", {"opacity": 1, "filter": "blur(0px)", "scale": 1}, {"opacity": 0, "filter": "blur(14px)", "scale": 1.2, "duration": 1.2, "ease": "power3.in", "immediateRender": false}, 21.1);
+    tl.fromTo("#s2-man-arm", {"rotation": -128, "svgOrigin": "84 104"}, {"rotation": -20, "svgOrigin": "84 104", "duration": 1.4, "ease": "power2.inOut", "immediateRender": false}, 20.9);
+    tl.fromTo("#s2-man-arm2", {"rotation": -112, "svgOrigin": "48 104"}, {"rotation": -10, "svgOrigin": "48 104", "duration": 1.4, "ease": "power2.inOut", "immediateRender": false}, 21.0);
+    tl.fromTo("#s2-man-head", {"rotation": -14, "svgOrigin": "65 92"}, {"rotation": 0, "svgOrigin": "65 92", "duration": 1.4, "ease": "power2.inOut", "immediateRender": false}, 20.9);
+    tl.fromTo("#s2-beam", {"opacity": 0.6}, {"opacity": 0, "duration": 1.1, "ease": "power2.inOut"}, 21.3);
+    tl.set({}, {}, 22.5);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>
