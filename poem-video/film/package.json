@@ -1,0 +1,25 @@
+{
+  "name": "turab-film",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render Turab out/turab.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.547",
+    "@remotion/fonts": "4.0.547",
+    "@remotion/layout-utils": "^4.0.547",
+    "@remotion/media": "^4.0.547",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.547"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.547",
+    "@types/react": "19.3.0",
+    "eslint": "10.15.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  }
+}
