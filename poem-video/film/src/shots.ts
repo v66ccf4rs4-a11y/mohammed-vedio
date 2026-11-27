@@ -17,7 +17,7 @@ const sink: Move = { from: [1.15, 0, -3], to: [1.15, 0, 3] };
 type Row = [string, number, number, Move, string?];
 const rows: Row[] = [
   ["ri32.jpg", 0, at(V[0]), push], // intro: mist over the Euphrates at Hilla
-  ["el30.jpg", at(V[0]), at(V[1]), push, "50% 28%"], // 1 يا جدّاه ترتجف
+  ["el30.jpg", at(V[0]), at(V[1]), push, "50% 6%"], // 1 يا جدّاه ترتجف
   ["su8.jpg", at(V[1]), at(V[2]), sink], // 2 الشمس قد أفلت
   ["de18.jpg", at(V[2]), at(V[3]), pull], // 3 مكانًا نائيًا
   ["yo27.jpg", at(V[3]), at(V[4]), push], // 4 وقفت مثلك

@@ -1,18 +1,15 @@
 # Progress
 
-**Now:** Brief, treatment, verse timings (`../../assets/verses.json`) and shot prompts (`drafts/prompts.md`) are ready.
+**Now:** First full cut rendered at `film/out/turab.mp4` (gitignored). Remotion project in `../../film`.
 
-**Route change:** the user can't pay for AI generation. We're building the film from **free stock footage (Pixabay)**, plus motion graphics and effects in Remotion. The symbolic shots that won't exist as stock (faces in the earth, skin turning into a tablet, the same grandfather and grandson throughout) get realised with effects: match-dissolves, layers, dust.
+**How it was made:**
+- Paid AI generation was out (no budget). Pexels stopped issuing keys. Pixabay needs a query-string key (env var, new session) and blocks bots.
+- Wikimedia Commons and Openverse rate-limited this network (429).
+- So the film is built from **Library of Congress Matson collection** public-domain scans of Iraq and the region (1898–1946). Credits are in `CREDITS.md`.
+- Masters are fetched as TIFF from `tile.loc.gov/storage-services/master/pnp/...u.tif`, auto-trimmed, and stereo cards halved. Results are in `film/public/media/`.
+- The archival look is deliberate ("the ancestors' own pictures"): sepia soft-light grade, gate flicker, grain, drifting dust, vignette. Each verse gets 1–2 photos with slow push, pull or pan moves and 1.4 s dissolves. yo14 → ta19 is a match-dissolve: skin into inscribed rock.
+- Typography: Amiri Bold, each hemistich ink-swept right to left on its spoken time (`verses.json` + 5 s intro offset). Right hemistich, ۞, left hemistich.
 
-**Environment:**
-- `pixabay.com` and `cdn.pixabay.com` are allowed.
-- The Pixabay key is the `PIXABAY_API_KEY` environment variable, which the user adds in the environment settings. Pixabay takes the key as a `key=` query parameter, so it can't be a network secret.
-- Pexels stopped issuing keys. Its saved network secret is unusable (401).
+**Open with the user:** poet name (`POET` in `film/src/theme.ts`), background music, whether the 5 s title intro is wanted.
 
-**User still owes:** the poet's name, and background music (yes/no).
-
-**Next:**
-1. Search Pixabay videos for each shot in the treatment and download the best landscape 1080p clips into `assets/`.
-2. Show the user a contact sheet of the picks.
-3. Build in Remotion: clips with slow push-ins and crossfades, a unified warm grade, dust overlay, Amiri hemistich typography synced to `verses.json`, intro and outro.
-4. Render, then watch it fully before delivering.
+**Next:** watch the render fully and fix any timing or framing issues. Optionally add a Pixabay key in a new session for a few colour/motion clips.
