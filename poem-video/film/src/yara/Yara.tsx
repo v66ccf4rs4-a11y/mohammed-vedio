@@ -3,6 +3,21 @@ import { useT } from "../time";
 import { Y } from "./kit";
 import { Forty, Hidden, Heart, Outro, Pluck, Purity, Slope, Title, War, Win, World } from "./scenes";
 import { YaraVerses } from "./Verses";
+import { Photo, type PhotoDef } from "./Photo";
+
+// Memories under the motion: each verse gets one photograph (Library of Congress, Matson collection).
+const PHOTOS: PhotoDef[] = [
+  { src: "ch53.jpg", a: 1.2, b: 10.2, focus: "50% 4%", zoom: [1.02, 1.14], strength: 0.8 },
+  { src: "ch53.jpg", a: 39.6, b: 47.6, focus: "46% 2%", zoom: [1.55, 1.75], strength: 0.75 },
+  { src: "gi11.jpg", a: 48.8, b: 56.2, focus: "40% 45%", zoom: [1.12, 1.04], pan: [3, -3], strength: 0.7 },
+  { src: "ma5.jpg", a: 57.2, b: 66.2, focus: "55% 30%", zoom: [1.05, 1.2], strength: 0.75 },
+  { src: "pa2.jpg", a: 67, b: 75, focus: "50% 50%", zoom: [1.05, 1.15], pan: [-2, 2], strength: 0.55, tone: "grey" },
+  { src: "ma9.jpg", a: 76, b: 84.8, focus: "50% 22%", zoom: [1.15, 1.05], strength: 0.45 },
+  { src: "ma3.jpg", a: 85.6, b: 92.6, focus: "50% 50%", zoom: [1.05, 1.18], strength: 0.7 },
+  { src: "pa32.jpg", a: 96.4, b: 101.4, focus: "50% 50%", zoom: [1.05, 1.14], pan: [2, -2], strength: 0.55, tone: "grey" },
+  { src: "ch48.jpg", a: 102.2, b: 110.6, focus: "45% 35%", zoom: [1.05, 1.18], strength: 0.75 },
+  { src: "ch53.jpg", a: 113, b: 121.5, focus: "50% 4%", zoom: [1.2, 1.04], strength: 0.5 },
+];
 
 export const YARA_LEN = 129.9;
 
@@ -32,6 +47,9 @@ export const Yara: React.FC = () => {
   const t = useT();
   return (
     <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 38%, #1a1820 0%, ${Y.bg} 70%)` }}>
+      {PHOTOS.map((p, i) => (
+        <Photo key={i} p={p} t={t} />
+      ))}
       <Win t={t} a={0.3} b={11.2}><Pluck t={t} draw={0.8} pluck={5.0} laugh={5.8} /></Win>
       <Win t={t} a={12} b={37.8} fin={1.5} fout={1.5}><Title t={t} /></Win>
       <Win t={t} a={39} b={48}><Pluck t={t} draw={39.0} pluck={43.1} laugh={43.9} scale={1.25} /></Win>

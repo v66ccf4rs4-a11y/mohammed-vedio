@@ -153,7 +153,7 @@ export const Forty: React.FC<{ t: number }> = ({ t }) => {
   const close = prog(t, 79.2, 3.2);
   const tighten = prog(t, 82.2, 1.2);
   const bleed = prog(t, 83.7, 2);
-  const R = 520 - close * 230 - tighten * 70;
+  const R = 470 - close * 210 - tighten * 60;
   return (
     <svg width={1920} height={1080} style={{ position: "absolute" }}>
       <defs>
@@ -169,10 +169,10 @@ export const Forty: React.FC<{ t: number }> = ({ t }) => {
         const a = (i / 28) * Math.PI * 2 + 0.1;
         const r = R + (i % 2) * 40;
         const x = CX + Math.cos(a) * r;
-        const y = CY + Math.sin(a) * r * 0.72;
+        const y = CY - 20 + Math.sin(a) * r * 0.5;
         const L = 150;
         const tx = CX + Math.cos(a) * (r + L);
-        const ty = CY + Math.sin(a) * (r + L) * 0.72;
+        const ty = CY - 20 + Math.sin(a) * (r + L) * 0.5;
         const tip = `M${x} ${y} L${x + Math.cos(a + 2.7) * 18} ${y + Math.sin(a + 2.7) * 18} L${x + Math.cos(a - 2.7) * 18} ${y + Math.sin(a - 2.7) * 18} Z`;
         const o = prog(t, 77.74 + i * 0.05, 0.6);
         const red = prog(t, 83.7 + (i % 5) * 0.1, 0.6);
