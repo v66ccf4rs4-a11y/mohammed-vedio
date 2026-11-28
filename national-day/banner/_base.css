@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+:root{--paper:#f5f1e8;--ink:#1a2e1f;--green:#2e6b4f;--green-deep:#12301f;--mint:#88c6a6;--gold:#c9a45c}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#ddd}
+.banner{width:1080px;height:1080px;position:relative;overflow:hidden;direction:rtl;font-family:'IBM Plex Sans Arabic',sans-serif}
+.serif{font-family:'Amiri',serif}
+.num{font-family:'Playfair Display',serif;direction:ltr;unicode-bidi:isolate}

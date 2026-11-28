@@ -1,0 +1,26 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><title>Geometric Banner</title><link rel="stylesheet" href="_base.css"><style>
+.banner{background:var(--green-deep);color:var(--paper)}
+.pattern{position:absolute;inset:0 0 auto 0;height:430px;
+ background:
+  conic-gradient(from 45deg at 50% 50%,#2e6b4f 0 25%,transparent 0 50%,#2e6b4f 0 75%,transparent 0) 0 0/90px 90px,
+  #1f5139;}
+.pattern::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,48,31,0) 40%,var(--green-deep) 100%)}
+.band{position:absolute;top:430px;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,var(--gold) 0 40px,transparent 40px 56px)}
+.badge{position:absolute;top:150px;left:50%;transform:translateX(-50%);width:250px;height:250px;background:var(--paper);color:var(--green-deep);display:grid;place-items:center;transform:translateX(-50%) rotate(45deg)}
+.badge span{transform:rotate(-45deg);font-size:130px;font-weight:800}
+.content{position:absolute;top:540px;left:96px;right:96px;text-align:center}
+.kicker{font-size:28px;font-weight:600;color:var(--gold)}
+h1{font-size:122px;font-weight:700;line-height:1.5;margin-top:10px}
+.sub{font-size:30px;opacity:.85;margin-top:18px;font-family:'Amiri',serif}
+.foot{position:absolute;bottom:70px;left:96px;right:96px;display:flex;justify-content:space-between;font-size:22px;opacity:.7;border-top:1px solid rgba(245,241,232,.3);padding-top:22px}
+</style></head><body>
+<div class="banner">
+  <div class="pattern"></div><div class="band"></div>
+  <div class="badge"><span class="num">96</span></div>
+  <div class="content">
+    <div class="kicker">٢٣ سبتمبر ٢٠٢٦</div>
+    <h1 class="serif">طموحٌ عنان السماء</h1>
+    <p class="sub">ستةٌ وتسعون عاماً على توحيد المملكة العربية السعودية</p>
+  </div>
+  <div class="foot"><span>اليوم الوطني السعودي</span><span class="num">1932 · 2026</span></div>
+</div></body></html>
