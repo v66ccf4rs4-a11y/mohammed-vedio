@@ -41,7 +41,7 @@ def write(name,svg): open(OUT+name,'w').write(svg); return svg
 if __name__=='__main__':
     os.makedirs(OUT,exist_ok=True)
     for f in os.listdir(OUT):
-        if f.endswith(('.svg','.png')): os.remove(OUT+f)
+        if f.endswith('.svg') and f!='brand-board.html': os.remove(OUT+f)
     for tag,ink,gold,sub,bg in [('ink',INK,GOLD,'#4a4d55',None),('ivory',IVORY,GOLD,'#c8c2b4',None),('mono-black',INK,INK,INK,None),('mono-white','#fff','#fff','#fff',None)]:
         b,bb=horizontal(ink,gold,sub); write(f'logo-horizontal-{tag}.svg',S(pad(bb,60),b,bg))
         b,bb=stacked(ink,gold,sub); write(f'logo-stacked-{tag}.svg',S(pad(bb,60),b,bg))
