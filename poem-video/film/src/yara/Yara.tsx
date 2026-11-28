@@ -8,15 +8,16 @@ import { Photo, type PhotoDef } from "./Photo";
 // Memories under the motion: each verse gets one photograph (Library of Congress, Matson collection).
 const PHOTOS: PhotoDef[] = [
   { src: "ch53.jpg", a: 1.2, b: 10.2, focus: "50% 4%", zoom: [1.02, 1.14], strength: 0.8 },
-  { src: "ch53.jpg", a: 39.6, b: 47.6, focus: "46% 2%", zoom: [1.55, 1.75], strength: 0.75 },
+  { src: "gosaibi-baby.jpg", a: 39.6, b: 47.6, zoom: [1.0, 1.08], strength: 0.9, contain: { h: 760, top: -40 } },
+  { src: "gosaibi.jpg", a: 13.5, b: 36.8, focus: "50% 30%", zoom: [1.0, 1.12], strength: 0.6 },
   { src: "gi11.jpg", a: 48.8, b: 56.2, focus: "40% 45%", zoom: [1.12, 1.04], pan: [3, -3], strength: 0.7 },
   { src: "ma5.jpg", a: 57.2, b: 66.2, focus: "55% 30%", zoom: [1.05, 1.2], strength: 0.75 },
   { src: "pa2.jpg", a: 67, b: 75, focus: "50% 50%", zoom: [1.05, 1.15], pan: [-2, 2], strength: 0.55, tone: "grey" },
-  { src: "ma9.jpg", a: 76, b: 84.8, focus: "50% 22%", zoom: [1.15, 1.05], strength: 0.45 },
+  { src: "gosaibi.jpg", a: 76, b: 84.8, focus: "50% 28%", zoom: [1.35, 1.15], strength: 0.42, tone: "grey" },
   { src: "ma3.jpg", a: 85.6, b: 92.6, focus: "50% 50%", zoom: [1.05, 1.18], strength: 0.7 },
   { src: "pa32.jpg", a: 96.4, b: 101.4, focus: "50% 50%", zoom: [1.05, 1.14], pan: [2, -2], strength: 0.55, tone: "grey" },
   { src: "ch48.jpg", a: 102.2, b: 110.6, focus: "45% 35%", zoom: [1.05, 1.18], strength: 0.75 },
-  { src: "ch53.jpg", a: 113, b: 121.5, focus: "50% 4%", zoom: [1.2, 1.04], strength: 0.5 },
+  { src: "gosaibi-baby.jpg", a: 113, b: 127.2, zoom: [1.08, 1.0], strength: 0.8, contain: { h: 760, top: -50 } },
 ];
 
 export const YARA_LEN = 129.9;

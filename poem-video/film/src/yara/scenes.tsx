@@ -54,8 +54,8 @@ export const Pluck: React.FC<{ t: number; draw: number; pluck: number; laugh: nu
 export const Title: React.FC<{ t: number }> = ({ t }) => (
   <AbsoluteFill>
     <HairRain t={t} t0={11} n={70} speed={0.6} />
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-      <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 150, color: Y.hair, direction: "rtl", opacity: prog(t, 13.5, 2.5), letterSpacing: 2, textShadow: "0 0 40px rgba(246,242,234,0.25)", transform: `scale(${1 + (t - 13) * 0.004})` }}>
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 90, flexDirection: "column" }}>
+      <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 120, color: Y.hair, direction: "rtl", opacity: prog(t, 13.5, 2.5), letterSpacing: 2, textShadow: "0 0 40px rgba(246,242,234,0.25)", transform: `scale(${1 + (t - 13) * 0.004})` }}>
         يارا والشَّعَراتُ البيض
       </div>
       <div style={{ width: 300 * prog(t, 17, 2), height: 1.5, background: Y.gold, margin: "18px 0 26px" }} />
@@ -291,10 +291,10 @@ export const Outro: React.FC<{ t: number }> = ({ t }) => {
           <Glow d={hairD(-90, 0, 90, 0, 14, 1)} w={2} glow={1.4} />
         </g>
       </svg>
-      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
-        <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 96, color: Y.hair, opacity: win(t, 114.5, 127.5, 1.5, 1.5), direction: "rtl" }}>يارا والشَّعَراتُ البيض</div>
+      <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 80, flexDirection: "column", gap: 4 }}>
+        <div style={{ fontFamily: NASKH, fontWeight: 700, fontSize: 84, color: Y.hair, opacity: win(t, 114.5, 127.5, 1.5, 1.5), direction: "rtl" }}>يارا والشَّعَراتُ البيض</div>
         <div style={{ fontFamily: NASKH, fontSize: 46, color: Y.gold, opacity: win(t, 116, 127.5, 1.5, 1.5) }}>غازي القصيبي</div>
-        <div style={{ marginTop: 40, fontFamily: SANS, fontWeight: 700, fontSize: 32, color: Y.dim, opacity: win(t, 118, 127.5, 1.5, 1.5) }}>{CHANNEL}</div>
+        <div style={{ marginTop: 18, fontFamily: SANS, fontWeight: 700, fontSize: 30, color: Y.dim, opacity: win(t, 118, 127.5, 1.5, 1.5) }}>{CHANNEL}</div>
       </AbsoluteFill>
     </AbsoluteFill>
   );

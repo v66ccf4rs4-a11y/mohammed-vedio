@@ -10,6 +10,8 @@ export type PhotoDef = {
   pan?: [number, number]; // x% from → to
   strength?: number; // max opacity
   tone?: "warm" | "cold" | "grey";
+  /** show the whole picture centred over a blurred copy (for square/portrait photos) */
+  contain?: { h: number; top: number };
 };
 
 const FADE = 1.6;
@@ -29,9 +31,32 @@ export const Photo: React.FC<{ p: PhotoDef; t: number }> = ({ p, t }) => {
         : "grayscale(1) sepia(0.55) brightness(0.92) contrast(1.06)";
   return (
     <AbsoluteFill style={{ opacity: o }}>
-      <AbsoluteFill style={{ transform: `scale(${z0 + (z1 - z0) * k}) translateX(${x0 + (x1 - x0) * k}%)` }}>
-        <Img src={staticFile(`yara/${p.src}`)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: p.focus ?? "50% 40%", filter: tone }} />
-      </AbsoluteFill>
+      {p.contain ? (
+        <>
+          <AbsoluteFill style={{ transform: "scale(1.2)" }}>
+            <Img src={staticFile(`yara/${p.src}`)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: `${tone} blur(40px) brightness(0.55)` }} />
+          </AbsoluteFill>
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: p.contain.top,
+              height: p.contain.h,
+              width: p.contain.h,
+              transform: `translateX(-50%) scale(${z0 + (z1 - z0) * k})`,
+              transformOrigin: "50% 40%",
+              WebkitMaskImage: "radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%)",
+              maskImage: "radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%)",
+            }}
+          >
+            <Img src={staticFile(`yara/${p.src}`)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: tone }} />
+          </div>
+        </>
+      ) : (
+        <AbsoluteFill style={{ transform: `scale(${z0 + (z1 - z0) * k}) translateX(${x0 + (x1 - x0) * k}%)` }}>
+          <Img src={staticFile(`yara/${p.src}`)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: p.focus ?? "50% 40%", filter: tone }} />
+        </AbsoluteFill>
+      )}
       {/* dreamy bloom */}
       <AbsoluteFill style={{ backdropFilter: "blur(0px)", background: "radial-gradient(ellipse at 50% 40%, rgba(255,236,210,0.10), transparent 60%)", mixBlendMode: "screen" }} />
       {/* soft memory edges + room for verses */}
