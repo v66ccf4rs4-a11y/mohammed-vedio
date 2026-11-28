@@ -4,4 +4,5 @@
 html,body{background:#ddd}
 .banner{width:1080px;height:1080px;position:relative;overflow:hidden;direction:rtl;font-family:'IBM Plex Sans Arabic',sans-serif}
 .serif{font-family:'Amiri',serif}
-.num{font-family:'Playfair Display',serif;direction:ltr;unicode-bidi:isolate}
+.num{font-family:'Amiri',serif;direction:ltr;unicode-bidi:isolate}
+::selection{background:var(--green);color:var(--paper)}

@@ -1037,6 +1037,11 @@
 .slide .body-zh{line-height:1.9;font-size:max(16px,min(1.25vw,2.2vh))}
 .slide .stat-nb,.slide .step-nb,.slide .big-num{direction:ltr;unicode-bidi:isolate;display:inline-block}
 .slide .stat-card{text-align:right}
+.slide .chrome{opacity:.78}
+.slide .foot{opacity:.72}
+.slide .meta{opacity:.75;text-transform:none}
+::selection{background:var(--accent);color:var(--accent-on)}
+.slide .stat-nb,.slide .step-nb{font-family:var(--serif-zh)}
 [data-slide-id="numbers"] .grid-6{gap:3.2vh 5vw;padding:0}
 [data-slide-id="numbers"] .stat-card .stat-nb{font-size:min(5vw,8.6vh)}
 [data-slide-id="numbers"] .stat-unit{font-size:.32em;white-space:nowrap}
@@ -1093,7 +1098,6 @@
     <div>العدد ٩٦</div>
   </div>
   <div class="frame" style="display:grid; gap:4vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>ملفّ خاص · الذكرى السادسة والتسعون</div>
     <h1 class="h-hero" data-anim>وطنٌ توحَّد</h1>
     <h2 class="h-sub" data-anim>حكاية المملكة العربية السعودية من الرياض ١٩٠٢ إلى رؤية ٢٠٣٠</h2>
     <p class="lead" style="max-width:58vw" data-anim>
@@ -1115,38 +1119,37 @@
     <div>٠٢ / ١٠</div>
   </div>
   <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>قبل الحكاية، الأرقام.</div>
     <h2 class="h-xl" data-anim>وطنٌ بحجم قارّة</h2>
     <p class="lead" style="margin-bottom:2vh" data-anim>ستة أرقام تختصر المسافة بين البداية واليوم.</p>
     <div class="grid-6" style="margin-top:2vh">
       <div class="stat-card" data-anim>
         <div class="stat-label">إعلان التوحيد</div>
-        <div class="stat-nb">1932</div>
+        <div class="stat-nb">١٩٣٢</div>
         <div class="stat-note">٢٣ سبتمبر، بأمر الملك عبدالعزيز</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">الذكرى</div>
-        <div class="stat-nb">96</div>
+        <div class="stat-nb">٩٦</div>
         <div class="stat-note">يوماً وطنياً منذ الإعلان</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">بداية المسيرة</div>
-        <div class="stat-nb">1902</div>
+        <div class="stat-nb">١٩٠٢</div>
         <div class="stat-note">استرداد الرياض</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">المساحة</div>
-        <div class="stat-nb">2.15<span class="stat-unit"> مليون كم²</span></div>
+        <div class="stat-nb">٢٫١٥<span class="stat-unit"> مليون كم²</span></div>
         <div class="stat-note">قرابة أربعة أخماس شبه الجزيرة</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">المناطق الإدارية</div>
-        <div class="stat-nb">13</div>
+        <div class="stat-nb">١٣</div>
         <div class="stat-note">منطقة من تبوك إلى نجران</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">الوجهة</div>
-        <div class="stat-nb">2030</div>
+        <div class="stat-nb">٢٠٣٠</div>
         <div class="stat-note">رؤية أُطلقت عام ٢٠١٦</div>
       </div>
     </div>
@@ -1163,7 +1166,6 @@
     <div>٠٣ / ١٠</div>
   </div>
   <div class="frame" style="display:grid; gap:6vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>الفصل الأول</div>
     <h1 class="h-hero" style="font-size:min(8.5vw,15vh)" data-anim>ثلاثون عاماً</h1>
     <p class="lead" style="max-width:55vw" data-anim>من فجرٍ على أسوار المصمك، إلى أمرٍ ملكي غيّر الخريطة.</p>
   </div>
@@ -1178,34 +1180,33 @@
     <div>الفصل الأول · الحكاية</div>
     <div>٠٤ / ١٠</div>
   </div>
-  <div class="frame">
-    <div class="kicker">محطات على الطريق</div>
+  <div class="frame" style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:4vh">
     <h2 class="h-xl">رحلة التوحيد</h2>
     <div class="pipeline-section">
       <div class="pipeline-label">من الرياض إلى المملكة · ١٩٠٢ – ١٩٣٢</div>
       <div class="pipeline">
         <div class="step" data-anim="step">
-          <div class="step-nb">1902</div>
+          <div class="step-nb">١٩٠٢</div>
           <div class="step-title">الرياض</div>
           <div class="step-desc">الملك عبدالعزيز يسترد الرياض، وتبدأ المسيرة</div>
         </div>
         <div class="step" data-anim="step">
-          <div class="step-nb">1913</div>
+          <div class="step-nb">١٩١٣</div>
           <div class="step-title">الأحساء</div>
           <div class="step-desc">ضم الأحساء، وانفتاح الطريق إلى الخليج</div>
         </div>
         <div class="step" data-anim="step">
-          <div class="step-nb">1921</div>
+          <div class="step-nb">١٩٢١</div>
           <div class="step-title">حائل</div>
           <div class="step-desc">ضم حائل، واكتمال الشمال</div>
         </div>
         <div class="step" data-anim="step">
-          <div class="step-nb">1925</div>
+          <div class="step-nb">١٩٢٥</div>
           <div class="step-title">الحجاز</div>
           <div class="step-desc">دخول الحجاز، والحرمان في عهدة الدولة</div>
         </div>
         <div class="step" data-anim="step">
-          <div class="step-nb">1932</div>
+          <div class="step-nb">١٩٣٢</div>
           <div class="step-title">التوحيد</div>
           <div class="step-desc">إعلان اسم «المملكة العربية السعودية»</div>
         </div>
@@ -1224,7 +1225,6 @@
     <div>٠٥ / ١٠</div>
   </div>
   <div class="frame" style="display:grid; gap:5vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>الأمر الملكي · ١٩٣٢</div>
     <blockquote style="font-family:var(--serif-zh); font-weight:700; font-size:min(5vw,8.9vh); line-height:1.45; max-width:76vw">
       <span data-anim="line" style="display:block; opacity:.55; font-size:.62em">من «مملكة الحجاز ونجد وملحقاتها»</span>
       <span data-anim="line" style="display:block">إلى «المملكة العربية السعودية»</span>
@@ -1248,21 +1248,20 @@
     <div>٠٦ / ١٠</div>
   </div>
   <div class="frame" style="padding-top:5vh">
-    <div class="kicker" data-anim>التأسيس والتوحيد</div>
     <h2 class="h-xl" style="margin-bottom:4vh" data-anim>جذرٌ وثمرة</h2>
     <div class="grid-2-6-6" style="gap:5vw 4vh">
-      <div data-anim="left" style="padding:3vh 2vw; border-inline-start:3px solid currentColor; opacity:.6">
-        <div class="kicker" style="opacity:.9">٢٢ فبراير · الجذر</div>
-        <h3 class="h-md" style="margin-top:2vh">يوم التأسيس</h3>
+      <div data-anim="left" style="padding:3vh 2vw; border-top:1px solid currentColor; opacity:.62">
+        <h3 class="h-md">يوم التأسيس</h3>
+        <div class="meta" style="margin-top:1vh">٢٢ فبراير · الجذر</div>
         <ul style="margin-top:3vh; padding-inline-start:1.2em; display:flex; flex-direction:column; gap:1.4vh; font-family:var(--sans-zh); font-size:max(16px,1.2vw); line-height:1.7">
           <li>يستعيد عام ١٧٢٧ وقيام الدولة السعودية الأولى</li>
           <li>على يد الإمام محمد بن سعود في الدرعية</li>
           <li>أُقرّ يوماً رسمياً منذ عام ٢٠٢٢</li>
         </ul>
       </div>
-      <div data-anim="right" style="padding:3vh 2vw; border-inline-start:3px solid var(--accent)">
-        <div class="kicker" style="opacity:.9; color:var(--accent-ink)">٢٣ سبتمبر · الثمرة</div>
-        <h3 class="h-md" style="margin-top:2vh">اليوم الوطني</h3>
+      <div data-anim="right" style="padding:3vh 2vw; border-top:3px solid var(--accent)">
+        <h3 class="h-md" style="color:var(--accent-ink)">اليوم الوطني</h3>
+        <div class="meta" style="margin-top:1vh">٢٣ سبتمبر · الثمرة</div>
         <ul style="margin-top:3vh; padding-inline-start:1.2em; display:flex; flex-direction:column; gap:1.4vh; font-family:var(--sans-zh); font-size:max(16px,1.2vw); line-height:1.7">
           <li>يستعيد إعلان توحيد المملكة عام ١٩٣٢</li>
           <li>على يد الملك عبدالعزيز آل سعود</li>
@@ -1282,24 +1281,20 @@
     <div>الفصل الثاني · الرموز</div>
     <div>٠٧ / ١٠</div>
   </div>
-  <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>ما نرفعه وما نردّده</div>
+  <div class="frame" style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:4vh">
     <h2 class="h-xl" data-anim>ثلاثة رموز</h2>
-    <div class="grid-3" style="margin-top:9vh; align-content:start">
-      <div data-anim style="border-top:1px solid currentColor; padding-top:3vh">
-        <i data-lucide="flag" style="width:min(2.6vw,4.6vh); height:min(2.6vw,4.6vh); color:var(--accent-ink-inverse)"></i>
-        <h3 class="h-md" style="margin-top:2vh">العلم</h3>
-        <p class="body-zh" style="margin-top:1.6vh">أخضر تتوسطه الشهادتان وسيف. لا يُنكَّس أبداً، وله يومٌ خاص في ١١ مارس.</p>
+    <div style="margin-top:6vh; display:flex; flex-direction:column">
+      <div data-anim style="display:grid; grid-template-columns:22vw 1fr; gap:4vw; align-items:baseline; border-top:1px solid rgba(var(--paper-rgb),.35); padding:3.2vh 0">
+        <h3 class="h-md" style="font-size:min(3.4vw,6vh)">العلم</h3>
+        <p class="body-zh" style="max-width:52ch">أخضر تتوسطه الشهادتان وسيف. لا يُنكَّس أبداً، وله يومٌ خاص في ١١ مارس.</p>
       </div>
-      <div data-anim style="border-top:1px solid currentColor; padding-top:3vh">
-        <i data-lucide="tree-palm" style="width:min(2.6vw,4.6vh); height:min(2.6vw,4.6vh); color:var(--accent-ink-inverse)"></i>
-        <h3 class="h-md" style="margin-top:2vh">الشعار</h3>
-        <p class="body-zh" style="margin-top:1.6vh">نخلةٌ رمزاً للنماء والخير، وسيفان متقاطعان رمزاً للقوة والعدل.</p>
+      <div data-anim style="display:grid; grid-template-columns:22vw 1fr; gap:4vw; align-items:baseline; border-top:1px solid rgba(var(--paper-rgb),.35); padding:3.2vh 0">
+        <h3 class="h-md" style="font-size:min(3.4vw,6vh)">الشعار</h3>
+        <p class="body-zh" style="max-width:52ch">نخلةٌ رمزاً للنماء والخير، وسيفان متقاطعان رمزاً للقوة والعدل.</p>
       </div>
-      <div data-anim style="border-top:1px solid currentColor; padding-top:3vh">
-        <i data-lucide="music" style="width:min(2.6vw,4.6vh); height:min(2.6vw,4.6vh); color:var(--accent-ink-inverse)"></i>
-        <h3 class="h-md" style="margin-top:2vh">النشيد</h3>
-        <p class="body-zh" style="margin-top:1.6vh">«سارعي للمجد والعلياء»، كلمات إبراهيم خفاجي، ويُردَّد في كل احتفال.</p>
+      <div data-anim style="display:grid; grid-template-columns:22vw 1fr; gap:4vw; align-items:baseline; border-top:1px solid rgba(var(--paper-rgb),.35); border-bottom:1px solid rgba(var(--paper-rgb),.35); padding:3.2vh 0">
+        <h3 class="h-md" style="font-size:min(3.4vw,6vh)">النشيد</h3>
+        <p class="body-zh" style="max-width:52ch">«سارعي للمجد والعلياء»، كلمات إبراهيم خفاجي، ويُردَّد في كل احتفال.</p>
       </div>
     </div>
   </div>
@@ -1315,7 +1310,6 @@
     <div>٠٨ / ١٠</div>
   </div>
   <div class="frame" style="display:grid; gap:6vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>الفصل الثالث</div>
     <h1 class="h-hero" style="font-size:min(8.5vw,15vh)" data-anim>طموحٌ عنان السماء</h1>
     <p class="lead" style="max-width:55vw" data-anim>الوحدة كانت البداية. الرؤية هي ما نصنعه بها.</p>
   </div>
@@ -1330,24 +1324,20 @@
     <div>الفصل الثالث · الغد</div>
     <div>٠٩ / ١٠</div>
   </div>
-  <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>رؤية المملكة ٢٠٣٠</div>
-    <h2 class="h-xl" data-anim>ثلاث ركائز</h2>
-    <div class="grid-3" style="margin-top:9vh; align-content:start">
-      <div data-anim style="border-top:3px solid var(--accent); padding-top:3vh">
-        <div class="big-num" style="font-size:min(5vw,8.9vh); color:var(--accent-display)">01</div>
-        <h3 class="h-md" style="margin-top:2vh">مجتمعٌ حيوي</h3>
-        <p class="body-zh" style="margin-top:1.6vh">قيمٌ راسخة، وبيئة عامرة، وجودة حياة ترتفع في كل مدينة.</p>
+  <div class="frame" style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:4vh">
+    <h2 class="h-md" data-anim style="opacity:.75">رؤية المملكة ٢٠٣٠ · ثلاث ركائز</h2>
+    <div style="margin-top:6vh; display:flex; flex-direction:column; gap:2.4vh">
+      <div data-anim style="display:flex; align-items:baseline; gap:3vw; flex-wrap:wrap">
+        <span class="h-xl" style="font-size:min(5.2vw,9.2vh)">مجتمعٌ حيوي</span>
+        <span class="body-zh">قيمٌ راسخة، وبيئة عامرة، وجودة حياة ترتفع في كل مدينة.</span>
       </div>
-      <div data-anim style="border-top:3px solid var(--accent); padding-top:3vh">
-        <div class="big-num" style="font-size:min(5vw,8.9vh); color:var(--accent-display)">02</div>
-        <h3 class="h-md" style="margin-top:2vh">اقتصادٌ مزدهر</h3>
-        <p class="body-zh" style="margin-top:1.6vh">تنويعٌ بعيد عن النفط، وفرصٌ مثمرة، واستثمارٌ في الإنسان.</p>
+      <div data-anim style="display:flex; align-items:baseline; gap:3vw; flex-wrap:wrap">
+        <span class="h-xl" style="font-size:min(5.2vw,9.2vh); color:var(--accent-display)">اقتصادٌ مزدهر</span>
+        <span class="body-zh">تنويعٌ بعيد عن النفط، وفرصٌ مثمرة، واستثمارٌ في الإنسان.</span>
       </div>
-      <div data-anim style="border-top:3px solid var(--accent); padding-top:3vh">
-        <div class="big-num" style="font-size:min(5vw,8.9vh); color:var(--accent-display)">03</div>
-        <h3 class="h-md" style="margin-top:2vh">وطنٌ طموح</h3>
-        <p class="body-zh" style="margin-top:1.6vh">حكومةٌ فاعلة، ومواطنٌ مسؤول يشارك في البناء.</p>
+      <div data-anim style="display:flex; align-items:baseline; gap:3vw; flex-wrap:wrap">
+        <span class="h-xl" style="font-size:min(5.2vw,9.2vh)">وطنٌ طموح</span>
+        <span class="body-zh">حكومةٌ فاعلة، ومواطنٌ مسؤول يشارك في البناء.</span>
       </div>
     </div>
   </div>
@@ -1363,7 +1353,6 @@
     <div>١٠ / ١٠</div>
   </div>
   <div class="frame" style="display:grid; gap:7vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>٢٣ سبتمبر</div>
     <h1 class="h-hero" style="font-size:min(7vw,12.4vh); line-height:1.3">
       <span data-anim style="display:block">كل عامٍ</span>
       <span data-anim style="display:block">والوطن بخير</span>
