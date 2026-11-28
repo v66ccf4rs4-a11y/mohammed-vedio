@@ -9,6 +9,8 @@
   - humanizer — removes signs of AI writing
   - linkedin-agent — 11 LinkedIn skills (posts, comments, profile, plan)
 - **Project skills** (`.claude/skills/`): find-skills, hypit (video from a reference; CLI `hypit`), graphify (codebase knowledge graph; CLI `graphify`).
+  - guizang-ppt-skill — magazine-style HTML slide decks (from op7418/guizang-ppt-skill).
+  - ui-ux-pro-max, design, design-system, brand, banner-design, slides, ui-styling — app UI, banners and brand design (from nextlevelbuilder/ui-ux-pro-max-skill). Logo/icon generation scripts need a GEMINI_API_KEY.
 - **Remotion skills** — synced from the claude.ai account.
 - **MCP servers** (`.mcp.json`): Playwright and Chrome DevTools (headless browser automation and debugging), Context7 (up-to-date library docs; no key needed).
 - **gstack**, and the `graphify`, `skillspector` and `hypit` CLIs — installed by the cloud environment's setup script.
