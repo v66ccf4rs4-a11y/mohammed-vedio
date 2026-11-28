@@ -3,7 +3,8 @@ from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.boundsPen import BoundsPen
-F='/tmp/claude-0/-home-user-mohammed-vedio/3a57e26a-f195-5a5d-8de1-49d61ea6b20a/scratchpad/fonts/'
+import os
+F=os.path.join(os.path.dirname(os.path.abspath(__file__)),'fonts')+'/'  # Alexandria + Montserrat, SIL OFL (Google Fonts)
 _c={}
 def _load(font):
     if font not in _c:

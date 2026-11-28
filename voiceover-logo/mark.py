@@ -1,4 +1,4 @@
-import sys,math; sys.path.insert(0,'/tmp/claude-0/-home-user-mohammed-vedio/3a57e26a-f195-5a5d-8de1-49d61ea6b20a/scratchpad')
+import sys,math,os; sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from glyphs import place, text_path
 INK='#121419'; GOLD='#C9A050'; IVORY='#F5F0E6'
 def arc(cx,cy,r,a0,a1):

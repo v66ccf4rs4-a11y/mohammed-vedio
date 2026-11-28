@@ -1,7 +1,7 @@
-import sys,os; sys.path.insert(0,'/tmp/claude-0/-home-user-mohammed-vedio/3a57e26a-f195-5a5d-8de1-49d61ea6b20a/scratchpad')
+import sys,os; sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from mark import ain_mark, INK, GOLD, IVORY
 from glyphs import place
-OUT='/home/user/mohammed-vedio/voiceover-logo/'
+OUT=os.path.dirname(os.path.abspath(__file__))+'/'
 MK=dict(n=2,step=.27,span=36,swk=.095,gap=.15)
 def S(vb,body,bg=None):
     x,y,w,h=vb; b=f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{bg}"/>' if bg else ''
